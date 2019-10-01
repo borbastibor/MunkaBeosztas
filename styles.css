@@ -1,0 +1,146 @@
+/*
+ * styles.css
+ * Stílusok a weblaphoz
+ * Készítette: Borbás Tibor
+ * Utolsó módosítás: 2019. szeptember 03.
+*/
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+div.mainframe {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    text-align: center;
+}
+
+div.headercontainer {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    background-color: rgb(0,150,0);
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    justify-content: border-box;
+}
+
+div.textbox {
+    width: auto;
+    margin: 5px;
+    padding: 5px;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+}
+
+div.formcontainer {
+    margin: 20px;
+    padding: 20px;
+    background-color: rgb(200,200,200);
+    border: none;
+    border-radius: 4px;
+}
+
+div.formtitle {
+    margin: 0px;
+    padding: 0 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+div.formbody {
+    margin: 0px;
+    padding: 20px;
+    font-size: 16px;
+    text-align: justify;
+}
+
+a.navbutton:link, a.navbutton:visited {
+    width: auto;
+    background-color: red;
+    background-image: linear-gradient(rgb(255,0,0), rgb(200,0,0),rgb(150,0,0));
+    color: white;
+    border: none;
+    border-radius: 4px;
+    margin: 5px;
+    padding: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+a.navbutton:hover, a.navbutton:active {
+    background-color: rgb(200,200,200);
+    background-image: linear-gradient(rgb(200,200,200),rgb(170,170,170),rgb(120,120,120));
+    color: black;
+}
+
+a.active {
+    width: auto;
+    background-color: rgb(200,200,200);
+    background-image: linear-gradient(rgb(200,200,200),rgb(170,170,170),rgb(120,120,120));
+    color: black;
+    border: none;
+    border-radius: 4px;
+    margin: 5px;
+    padding: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+label {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+input {
+    font-size: 16px;
+}
+
+input[type=submit] {
+    width: 150px;
+    background-color: rgb(50,150,50);
+    color: white;
+    padding: 10px 20px;
+    margin: 15px 0 0 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  input[type=submit]:hover {
+    background-color: rgb(50,200,50);
+  }
+
+  table {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    /*border: 1px solid black;*/
+    border-spacing: 0px;
+    border-collapse: collapse;
+  }
+
+  td {
+    margin: 0px;
+    padding: 0px;
+    width: auto;
+    height: 12px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px 3px 1px 3px;
+    font-size: 11px;
+  }
