@@ -2,7 +2,8 @@
 /*
  * table.php
  * Az .xlsx fájlból beolvassa az adatokat és megjeleníti formázottan
- * a weblapon egy táblázatban.
+ * a weblapon egy táblázatban. A végén található javascript gondoskodik
+ * a weblap frissítéséről (újratölti) a megadott időközönként.
  * Készítette: Borbás Tibor
  * Utolsó módosítás: 2019. szeptember 03.
 */
