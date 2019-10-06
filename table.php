@@ -115,7 +115,7 @@ window.onload = function() {
         var timestamp = date + " " + time;
         if(current >= updLowerBound && current < updUpperBound) {
             sessionStorage.setItem("updTime", timestamp);
-            location.reload();
+            location.reload(true);
         }
         
     }
