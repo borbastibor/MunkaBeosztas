@@ -91,8 +91,9 @@
                         echo("</table>".PHP_EOL);
                     }
                 }
+            } else {
+                echo("<tr><td style='margin: 0px; padding: 20px; height: 100%; font-size: 18px; font-weight: bold; text-align: center; border: none;'>Nincs kiválasztva adatfájl!</td></tr>");
             }
-            echo("<tr><td style='margin: 0px; padding: 20px; height: 100%; font-size: 18px; font-weight: bold; text-align: center; border: none;'>Nincs kiválasztva adatfájl!</td></tr>");
         ?>
     </table>
 </div>
