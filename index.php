@@ -71,6 +71,7 @@ if (isset($_POST['dataFile'])) {
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="author" content="Borbás Tibor">
     <title>Munkabeosztás</title>
+    <!-- A következő sort írtam bele -->
     <meta http-equiv="refresh" content="15">
     <link rel="stylesheet" href="styles.css" type="text/css">
 </head>
