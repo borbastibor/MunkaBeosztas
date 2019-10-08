@@ -16,7 +16,7 @@
                 $lowerDate = explode(".",$dates[0]);
                 $upperDate = explode(".",$dates[1]);
                 $lDate = new DateTime(date("Y")."-".$lowerDate[0]."-".$lowerDate[1]);
-                $uDate = new DateTime(date("Y")."-".$upperDate[0]."-".$upperDate[0]);
+                $uDate = new DateTime(date("Y")."-".$upperDate[0]."-".$upperDate[1]);
                 $cDate = new DateTime(date("Y-m-d"));
                 if($cDate >= $lDate && $cDate <= $uDate) {
                     return TRUE;
