@@ -104,9 +104,7 @@ window.onload = function() {
     var updFrom = rawUpdFrom.split(":");
     var updTo = rawUpdTo.split(":");
 
-    setInterval(loadTable, updInterval);
-
-    function loadTable() {
+    setInterval(function() {
         var today = new Date();
         var current = new Date(today.getFullYear(),today.getMonth(),today.getDate(),today.getHours(),today.getMinutes());
         var updLowerBound = new Date(today.getFullYear(),today.getMonth(),today.getDate(),parseInt(updFrom[0]),parseInt(updFrom[1]));
@@ -118,7 +116,6 @@ window.onload = function() {
             sessionStorage.setItem("updTime", timestamp);
             location.reload(true);
         }
-        
-    }
+    }, updInterval);
 }
 </script>
