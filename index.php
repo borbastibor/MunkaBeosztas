@@ -9,11 +9,8 @@
 */
 session_start();
 $settings = parse_ini_file("config.ini");
-$_SESSION['updTime'] = date("Y-m-d H:i");
 $_SESSION['dataFile'] = $settings['dataFile'];
 $_SESSION['updDensity'] = $settings['updDensity'];
-$_SESSION['intervalFrom'] = $settings['intervalFrom'];
-$_SESSION['intervalTo'] = $settings['intervalTo'];
 
 ?>
 
@@ -23,7 +20,7 @@ $_SESSION['intervalTo'] = $settings['intervalTo'];
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="author" content="Borbás Tibor">
     <title>Munkabeosztás</title>
-    <meta http-equiv="refresh" content="15">
+    <meta http-equiv="refresh" content=<?php $settings['updDensity'] ?>>
     <link rel="stylesheet" href="styles.css" type="text/css">
 </head>
 <body>
