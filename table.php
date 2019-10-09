@@ -97,26 +97,3 @@
         ?>
     </table>
 </div>
-<script>
-window.onload = function() {
-    var updInterval = parseInt(<?php echo($settings['updDensity']); ?>) * 60000;
-    var rawUpdFrom = "<?php echo($settings['intervalFrom']); ?>";
-    var rawUpdTo = "<?php echo($settings['intervalTo']); ?>";
-    var updFrom = rawUpdFrom.split(":");
-    var updTo = rawUpdTo.split(":");
-
-    setInterval(function() {
-        var today = new Date();
-        var current = new Date(today.getFullYear(),today.getMonth(),today.getDate(),today.getHours(),today.getMinutes());
-        var updLowerBound = new Date(today.getFullYear(),today.getMonth(),today.getDate(),parseInt(updFrom[0]),parseInt(updFrom[1]));
-        var updUpperBound = new Date(today.getFullYear(),today.getMonth(),today.getDate(),parseInt(updTo[0]),parseInt(updTo[1]));
-        var date = today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate();
-        var time = today.getHours() + ":" + today.getMinutes();
-        var timestamp = date + " " + time;
-        if(current >= updLowerBound && current < updUpperBound) {
-            sessionStorage.setItem("updTime", timestamp);
-            location.reload(true);
-        }
-    }, updInterval);
-}
-</script>
