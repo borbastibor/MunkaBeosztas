@@ -1,11 +1,11 @@
 <?php
-/*
- * index.php
- * Készítette: Borbás Tibor
- * Utolsó módosítás: 2019. december 08.
-*/
 
-require_once("Utilities/config.php");
+require_once "FrontController.php";
+FrontController::createInstance()->dispatch();
 
-include("Views/indexView.php");
+$pdo = (new SQLiteConnection())->connect();
+if ($pdo == null) {
+    echo("Sikertelen csatlakozás az adatbázishoz!");
+}
+
 ?>
