@@ -6,7 +6,7 @@
     <body>
 
         <?php 
-        require_once("appplication/view/navPartialView.php");
+        require_once("application/view/navPartialView.php");
         $application->loadController($array_uri['controller']); 
         ?>
     </body>

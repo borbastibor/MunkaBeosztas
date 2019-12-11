@@ -8,7 +8,7 @@ class Application {
         $this->uri = $uri;
         if ($this->pdo == null) {
             try {
-                $this->pdo = new \PDO("sqlite:database/MunkaBeosztas.db");
+                $this->pdo = new \PDO("sqlite:application/database/MunkaBeosztas.db");
             } catch (\PDOException $e) {
                 echo("Sikertelen kapcsolódás az adatbázishoz! ".$e->getMessage());
             }
