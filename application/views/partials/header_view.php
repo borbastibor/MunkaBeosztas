@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="hu">
+    <head>
+        <meta charset="utf-8">
+        <title>Munkabeosztás</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Munkabeosztást megjelenítő weboldal">
+        <meta name="author" content="Borbás Tibor">
+        <link href="<?php echo base_url(); ?>/application/css/styles.css" rel="stylesheet">
+    </head>
+    <body>
