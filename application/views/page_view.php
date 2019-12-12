@@ -1,7 +1,10 @@
 <?php
 
-$this->load->view('partials/header_view');
-$this->load->view('partials/menu_view'); 
-$this->load->view('partials/footer_view');
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+$this->load->view($header);
+$this->load->view($navbar);
+$this->load->view($content);
+$this->load->view($footer);
 
 ?>
