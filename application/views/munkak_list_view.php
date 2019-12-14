@@ -16,14 +16,30 @@
         $interval = new DateInterval('P1D');
         $period = new DatePeriod($begin, $interval, $end);
         foreach ($period as $dt) {
-            echo('<th class="calendar">'.$dt->format('Y.m.d').' ('.$weekdays[$dt->format('N')].')</th>');
+            switch ($dt->format('N')) {
+                case '6':
+                    $bgcolor = ' style="background-color: green;"';
+                    break;
+                
+                case '7':
+                    $bgcolor = ' style="background-color: red;"';
+                    break;
+
+                default:
+                    $bgcolor = '';
+                    break;
+            }
+            echo('<th class="calendar"'.$bgcolor.'>'.$dt->format('Y.m.d').' ('.$weekdays[$dt->format('N')].')</th>');
         }
         ?>
     </tr>
     <tr>
         <td class="calendar">
             <div class="job-container">
-                <div class="job-title">fejléc</div>
+                <div class="job-title">
+                    <a class="jobtitle-menuitem" href="">Szerkeszt</a>
+                    <a class="jobtitle-menuitem" href="">Eltávolít</a>
+                </div>
                 <div class="job-body">
                     Kiss Géza<br />
                     Toyota Hilux (KXX-123)<br />
