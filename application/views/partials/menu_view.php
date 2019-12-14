@@ -1,5 +1,7 @@
 <div class="navbar-container">
-    <a class="navbar-menuitem" href="">Munkák</a>
-    <a class="navbar-menuitem" href="#dolgozok">Dolgozók</a>
-    <a class="navbar-menuitem" href="#kocsik">Kocsik</a>
+    <?php
+    echo(anchor('home', 'Munkák', array('class' => 'navbar-menuitem')));
+    echo(anchor('dolgozok', 'Dolgozók', array('class' => 'navbar-menuitem')));
+    echo(anchor('kocsik', 'Kocsik', array('class' => 'navbar-menuitem')));
+    ?>
 </div>

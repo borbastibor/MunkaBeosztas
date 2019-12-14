@@ -2,7 +2,7 @@
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Dolgozok extends CI_Controller {
 
 	public function __constructor() {
 		parent::__constructor();
@@ -13,23 +13,23 @@ class Home extends CI_Controller {
 		$data = [
 			'header' => 'partials/header_view.php',
 			'menu' => 'partials/menu_view',
-			'content' => 'munkak_list_view',
+			'content' => 'dolgozok_view',
 			'footer' => 'partials/footer_view'
 		];
 		$this->load->view('page_view', $data);
 	}
 
-	// Új munka létrehozása
+	// Új dolgozó létrehozása
 	public function create() {
 
 	}
 
-	// Kiválasztott munka szerkesztése
+	// Kiválasztott dolgozó szerkesztése
 	public function edit() {
 
 	}
 
-	// Kiválasztott munka törlése
+	// Kiválasztott dolgozó törlése
 	public function delete() {
 
 	}
