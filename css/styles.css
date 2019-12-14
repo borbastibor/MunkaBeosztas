@@ -104,3 +104,50 @@ div.job-body {
     font-size: 12px;
     word-wrap: normal;
 }
+
+div.create-button {
+    position: fixed;
+    width: auto;
+    padding: 0px 5px;
+    border-radius: 6px;
+    top: 5px;
+    right: 5px;
+    background-color: black;
+    color: white;
+    opacity: 0.5;
+    font-size: 28px;
+    font-weight: bolder;
+    z-index: 1;
+}
+
+div.create-button:hover {
+    opacity: 1;
+}
+
+/* A szerkesztés, törlés és létrehozás lapok stílusai */
+div.body-container {
+    padding: 0px;
+    margin: 15px 5px;
+    background-color: white;
+    border-radius:  6px;
+    border: none;
+}
+
+div.body-title {
+    padding: 10px;
+    margin: 0px;
+    border-radius: 6px 6px 0px 0px;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+}
+
+div.body-body {
+    padding: 10px;
+    margin: 0px;
+    border-radius: 0px 0px 6px 6px;
+    background-color: white;
+    color: black;
+    font-size: 12px;
+    word-wrap: normal;
+}

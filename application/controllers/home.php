@@ -21,7 +21,13 @@ class Home extends CI_Controller {
 
 	// Új munka létrehozása
 	public function create() {
-
+		$data = [
+			'header' => 'partials/header_view.php',
+			'menu' => 'partials/menu_view',
+			'content' => 'munkak_create_view',
+			'footer' => 'partials/footer_view'
+		];
+		$this->load->view('page_view', $data);
 	}
 
 	// Kiválasztott munka szerkesztése
