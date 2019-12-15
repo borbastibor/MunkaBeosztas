@@ -1,4 +1,4 @@
-<a href=""><div class="create-button">+</div></a>
+<?php echo(anchor('home/create','<div class="create-button">+</div>')); ?>
 <table class="calendar">
     <tr>
         <?php
@@ -38,18 +38,29 @@
         <td class="calendar">
             <div class="job-container">
                 <div class="job-title">
-                    <a class="jobtitle-menuitem" href="">Szerkeszt</a>
-                    <a class="jobtitle-menuitem" href="">Eltávolít</a>
+                    <table class="jobtitle-table">
+                        <tr>
+                            <td class="jobtitle-cell">
+                                <?php
+                                $anchordata = [
+                                    'class' => 'jobtitle-menuitem',
+                                    'style' => 'border-radius: 4px 0px 0px 0px'
+                                ];
+                                echo(anchor('home/edit','Szerkeszt',$anchordata));
+                                ?>
+                            </td>
+                            <td class="jobtitle-cell">
+                                <?php
+                                $anchordata = [
+                                    'class' => 'jobtitle-menuitem',
+                                    'style' => 'border-radius: 0px 4px 0px 0px'
+                                ];
+                                echo(anchor('home/delete','Eltávolít',$anchordata));
+                                ?>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
-                <div class="job-body">
-                    Kiss Géza<br />
-                    Toyota Hilux (KXX-123)<br />
-                    Székesfehérvár<br />
-                    Munkatérkép előkészítés
-                </div>
-            </div>
-            <div class="job-container">
-                <div class="job-title">fejléc</div>
                 <div class="job-body">
                     Kiss Géza<br />
                     Toyota Hilux (KXX-123)<br />
@@ -58,17 +69,7 @@
                 </div>
             </div>
         </td>
-        <td class="calendar">
-            <div class="job-container">
-                <div class="job-title">fejléc</div>
-                <div class="job-body">
-                    Kiss Géza<br />
-                    Toyota Hilux (KXX-123)<br />
-                    Székesfehérvár<br />
-                    Munkatérkép előkészítés
-                </div>
-            </div>
-        </td>
+        <td class="calendar"></td>
         <td class="calendar"></td>
         <td class="calendar"></td>
         <td class="calendar"></td>

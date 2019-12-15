@@ -4,7 +4,7 @@ body {
     width: 100%;
     font-family: 'Lucida Sans Unicode';
     font-size: 12px;
-    background-color: gray;
+    background-color: rgb(150,150,150);
 }
 
 /* Navigációs bár stílusai */
@@ -49,7 +49,7 @@ th.calendar {
     padding: 5px;
     margin: 0px;
     width: 14%;
-    background-color: gray;
+    background-color: rgb(150,150,150);
     color: white;
     border: 2px solid black;
 }
@@ -58,7 +58,7 @@ td.calendar {
     margin: 0px;
     width: 14%;
     height: 500px;
-    background-color: gray;
+    background-color: rgb(150,150,150);
     border: 2px solid black;
     vertical-align: top;
 }
@@ -82,17 +82,32 @@ div.job-title {
 a.jobtitle-menuitem:link, a.jobtitle-menuitem:visited {
     background-color: rgb(0, 0, 250);
     color: white;
-    padding: 3px 5px;
+    padding: 0px;
     margin: 0px;
+    width: 100%;
     text-align: center;
     text-decoration: none;
     font-size: 12px;
     font-weight: bold;
     display: inline-flex;
+    justify-content: center;
 }
 
 a.jobtitle-menuitem:hover, a.jobtitle-menuitem:active {
     background-color: rgb(0, 130, 250);
+}
+
+table.jobtitle-table {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    border-collapse: collapse;
+}
+
+td.jobtitle-cell {
+    padding: 0px;
+    margin: 0px;
+    width: 50%;
 }
 
 div.job-body {
@@ -114,7 +129,7 @@ div.create-button {
     right: 5px;
     background-color: black;
     color: white;
-    opacity: 0.5;
+    opacity: 0.25;
     font-size: 28px;
     font-weight: bolder;
     z-index: 1;
@@ -127,10 +142,11 @@ div.create-button:hover {
 /* A szerkesztés, törlés és létrehozás lapok stílusai */
 div.body-container {
     padding: 0px;
-    margin: 15px 5px;
+    margin: 15px 20%;
     background-color: white;
     border-radius:  6px;
     border: none;
+    box-shadow: 5px 10px 8px rgb(75,75,75);
 }
 
 div.body-title {
@@ -150,4 +166,59 @@ div.body-body {
     color: black;
     font-size: 12px;
     word-wrap: normal;
+}
+
+/* Input elemek stílusai */
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  input[type=submit] {
+    width: 100%;
+    background-color: rgb(0,150,0);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: 5px solid rgb(0,150,0);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  input[type=submit]:hover {
+    background-color: white;
+    color: rgb(0,150,0);
+  }
+
+  a.cancel-button:link, a.cancel-button:visited {
+    background-color: rgb(150,0,0);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px;
+    border: 5px solid rgb(150,0,0);
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-flex;
+}
+
+a.cancel-button:hover, a.cancel-button:active {
+    background-color: white;
+    color: rgb(150,0,0);
+}
+
+div.cancel-button {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
 }
