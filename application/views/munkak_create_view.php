@@ -12,7 +12,7 @@
             <label for="jobdesc">Leírás:</label><br />
             <input type="text" id="jobdesc" required><br /><br />
             <label for="worker">Dolgozó:</label><br />
-            <select id="worker" required></select>
+            <select id="worker" required></select><br /><br />
             <label for="car">Gépjármű:</label><br />
             <select id="car" required></select>
             <input type="checkbox" name="fixedjob" value="fixed">Átütemezhető?<br /><br />

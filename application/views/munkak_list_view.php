@@ -44,7 +44,8 @@
                                 <?php
                                 $anchordata = [
                                     'class' => 'jobtitle-menuitem',
-                                    'style' => 'border-radius: 4px 0px 0px 0px'
+                                    'style' => 'border-radius: 4px 0px 0px 0px',
+                                    'id' => '' // Ide jön a munkaid
                                 ];
                                 echo(anchor('home/edit','Szerkeszt',$anchordata));
                                 ?>
@@ -53,7 +54,8 @@
                                 <?php
                                 $anchordata = [
                                     'class' => 'jobtitle-menuitem',
-                                    'style' => 'border-radius: 0px 4px 0px 0px'
+                                    'style' => 'border-radius: 0px 4px 0px 0px',
+                                    'id' => '' // ide jön a munkaid
                                 ];
                                 echo(anchor('home/delete','Eltávolít',$anchordata));
                                 ?>
@@ -62,6 +64,9 @@
                     </table>
                 </div>
                 <div class="job-body">
+                    <?php 
+                    // Itt kell megjeleníteni a munka adatait
+                    ?>
                     Kiss Géza<br />
                     Toyota Hilux (KXX-123)<br />
                     Székesfehérvár<br />

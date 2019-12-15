@@ -12,5 +12,6 @@
         }
         ?>
         <link rel="stylesheet" type="text/css" href=<?php echo(base_url('css/styles.css')); ?>>
+        <script src=<?php echo(base_url('js/dropdown-menu.js')); ?>></script>
     </head>
     <body>

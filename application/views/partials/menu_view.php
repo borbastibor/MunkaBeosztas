@@ -1,10 +1,10 @@
-<?php echo(anchor('home/create','<div class="navbar-button">M</div>')); ?>
-<div class="navbar-container">
-    <?php
-    echo(anchor('home', 'Munkák', array('class' => 'navbar-menuitem')));
-    echo('<br />');
-    echo(anchor('dolgozok', 'Dolgozók', array('class' => 'navbar-menuitem')));
-    echo('<br />');
-    echo(anchor('kocsik', 'Kocsik', array('class' => 'navbar-menuitem')));
-    ?>
+<div class="dropdown">
+    <button onclick="dropdownClick()" class="dropbutton">M</button>
+    <div id="dropdown-menu" class="dropdown-content">
+        <?php
+        echo(anchor('home','Munkák'));
+        echo(anchor('dolgozok','Dolgozók'));
+        echo(anchor('kocsik','Kocsik'));
+        ?>
+  </div>
 </div>

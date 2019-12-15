@@ -1,5 +1,3 @@
-    <script>
     
-    </script>
     </body>
 </html>

@@ -8,55 +8,57 @@ body {
 }
 
 /* Navigációs bár stílusai */
-div.navbar-button {
-    position: fixed;
-    width: auto;
-    padding: 0px 5px;
-    border-radius: 6px;
-    top: 5px;
-    right: 5px;
-    background-color: black;
+.dropbutton {
+    background-color: rgb(50,50,50);
     color: white;
-    opacity: 0.25;
+    padding: 5px;
     font-size: 28px;
-    font-weight: bolder;
-    z-index: 1;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    opacity: 0.25;
+    filter: alpha(opacity=25);
 }
 
-div.navbar-button:hover {
+.dropbutton:hover, .dropbutton:focus {
     opacity: 1;
 }
-
-div.navbar-container {
+  
+.dropdown {
     position: fixed;
-    width: auto;
-    padding: 0px;
-    margin: 0px;
-    border-radius: 6px;
-    top: 45px;
-    right: 5px;
-    background-color: black;
-    color: white;
-    font-size: 12px;
-    font-weight: bold;
+    top: 5px;
+    left: 5px;
+    display: inline-block;
     z-index: 1;
 }
-
-a.navbar-menuitem:link, a.navbar-menuitem:visited {
-    background-color: rgb(0, 0, 250);
+  
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(50,50,50);
+    min-width: 160px;
+    z-index: 1;
+}
+  
+/* Links inside the dropdown */
+.dropdown-content a {
     color: white;
-    padding: 5px 15px;
-    margin: 0px;
-    border-radius: 10px;
-    text-align: center;
+    padding: 6px 10px;
     text-decoration: none;
     font-size: 12px;
-    font-weight: bold;
-    display: inline-flex;
+    display: block;
 }
-
-a.navbar-menuitem:hover, a.navbar-menuitem:active {
-    background-color: rgb(0, 130, 250);
+  
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: rgb(200,200,200);
+    color: black;
+}
+  
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+    display:block;
 }
 
 /* Munkák listához tartozó stílusok */
@@ -147,10 +149,9 @@ div.create-button {
     position: fixed;
     width: auto;
     padding: 0px 5px;
-    border-radius: 6px;
     top: 5px;
-    right: 45px;
-    background-color: black;
+    right: 5px;
+    background-color: rgb(50,50,50);
     color: white;
     opacity: 0.25;
     font-size: 28px;
@@ -170,6 +171,7 @@ div.body-container {
     border-radius:  6px;
     border: none;
     box-shadow: 5px 10px 8px rgb(75,75,75);
+    position: relative;
 }
 
 div.body-title {
@@ -194,6 +196,9 @@ div.body-body {
 }
 
 a.cancel-button:link, a.cancel-button:visited {
+    position: absolute;
+    top: 10px;
+    right: 15px;
     background-color: rgb(0, 0, 250);
     color: white;
     padding: 0px;
@@ -202,11 +207,10 @@ a.cancel-button:link, a.cancel-button:visited {
     text-decoration: none;
     font-size: 12px;
     font-weight: bold;
-    z-index: 1;
 }
 
-a.cancel-button:hover, a.cancel-button:active {
-    background-color: rgb(0, 130, 250);
+a.cancel-button:hover {
+    color: black;
 }
 
 /* Input elemek stílusai */
