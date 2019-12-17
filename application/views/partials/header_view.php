@@ -11,7 +11,10 @@
             echo('<meta http-equiv="refresh" content="'.$upd_interval.'">');
         }
         ?>
-        <link rel="stylesheet" type="text/css" href=<?php echo(base_url('css/styles.css')); ?>>
-        <script src=<?php echo(base_url('js/dropdown-menu.js')); ?>></script>
+        <link rel="stylesheet" type="text/css" href=<?php echo(base_url('css/mainStyles.css')); ?>>
+        <link rel="stylesheet" type="text/css" href=<?php echo(base_url('css/tagStyles.css')); ?>>
+        <link rel="stylesheet" type="text/css" href=<?php echo(base_url('css/tableStyles.css')); ?>>
+        <link rel="stylesheet" type="text/css" href=<?php echo(base_url('css/controlStyles.css')); ?>>
+        <script src=<?php //echo(base_url('js/dropdown-menu.js')); ?>></script>
     </head>
     <body>

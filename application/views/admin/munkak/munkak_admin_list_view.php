@@ -1,3 +1,4 @@
+<?php echo(anchor('home/create','<div class="create-button">+</div>')); ?>
 <?php echo(anchor('home/stepLeft','<div class="leftshift-button">&#8810;</div>')); ?>
 <?php echo(anchor('home/stepRight','<div class="rightshift-button">&#8811;</div>')); ?>
 <table class="calendar-container">
@@ -38,6 +39,32 @@
     <tr>
         <td class="calendar-cell">
             <div class="tag-container">
+                <div class="tag-title">
+                    <table class="tag-title-table">
+                        <tr>
+                            <td class="tag-title-tablecell">
+                                <?php
+                                $anchordata = [
+                                    'class' => 'tag-title-menuitem',
+                                    'style' => 'border-radius: 4px 0px 0px 0px',
+                                    'id' => '' // Ide jön a munkaid
+                                ];
+                                echo(anchor('home/edit','Szerkeszt',$anchordata));
+                                ?>
+                            </td>
+                            <td class="tag-title-tablecell">
+                                <?php
+                                $anchordata = [
+                                    'class' => 'tag-title-menuitem',
+                                    'style' => 'border-radius: 0px 4px 0px 0px',
+                                    'id' => '' // ide jön a munkaid
+                                ];
+                                echo(anchor('home/delete','Eltávolít',$anchordata));
+                                ?>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
                 <div class="tag-body">
                     <?php 
                     // Itt kell megjeleníteni a munka adatait

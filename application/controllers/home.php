@@ -8,7 +8,7 @@ class Home extends CI_Controller {
 		parent::__constructor();
 	}
 
-	// Lista nézat betöltése
+	// Lista nézet betöltése
 	public function index() {
 		$data = [
 			'header' => 'partials/header_view.php',
@@ -24,7 +24,7 @@ class Home extends CI_Controller {
 		$data = [
 			'header' => 'partials/header_view.php',
 			'menu' => 'partials/menu_view',
-			'content' => 'munkak_create_view',
+			'content' => 'admin/munkak/munkak_create_view',
 			'footer' => 'partials/footer_view'
 		];
 		$this->load->view('page_view', $data);
@@ -37,6 +37,11 @@ class Home extends CI_Controller {
 
 	// Kiválasztott munka törlése
 	public function delete() {
+
+	}
+
+	// Aktuális felhasználó validálása
+	public function checkUser() {
 
 	}
 
