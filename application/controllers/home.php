@@ -19,15 +19,4 @@ class Home extends CI_Controller {
 		$this->load->view('public_template_view', $partialviews);
 	}
 
-	// Új munka létrehozása
-	public function stepLeft($currentDate) {
-		$data = [
-			'header' => 'partials/header_view.php',
-			'menu' => 'partials/menu_view',
-			'content' => 'admin/munkak/munkak_create_view',
-			'footer' => 'partials/footer_view'
-		];
-		$this->load->view('public_template_view', $data);
-	}
-
 }

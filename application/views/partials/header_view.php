@@ -15,6 +15,5 @@
         <link rel="stylesheet" type="text/css" href=<?php echo(base_url('css/tagStyles.css')); ?>>
         <link rel="stylesheet" type="text/css" href=<?php echo(base_url('css/tableStyles.css')); ?>>
         <link rel="stylesheet" type="text/css" href=<?php echo(base_url('css/controlStyles.css')); ?>>
-        <script src=<?php //echo(base_url('js/dropdown-menu.js')); ?>></script>
     </head>
     <body>
