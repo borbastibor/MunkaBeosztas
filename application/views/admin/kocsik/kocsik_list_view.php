@@ -1,6 +1,8 @@
 <div class="adminform-container">
     <div class="adminform-title">Gépjárművek</div>
     <div class="adminform-body">
+        <?php echo(anchor('kocsik/create','Új gépjármű','class="itemcreate-button"')); ?>
+        <br />
         <table class="listview-table">
             <tr>
                 <th class="listview-rowheader">Típus</th>

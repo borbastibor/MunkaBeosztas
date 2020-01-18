@@ -7,15 +7,20 @@ class Kocsik_model extends CI_Model {
     }
 
     public function insert_entry() {
-
+        $data = array(
+            'tipus' => $this->input->post('tipus'),
+            'rendszam' => $this->input->post('rendszam')
+        );
+        return $this->db->insert('kocsik', $data);
     }
 
     public function update_entry() {
 
     }
 
-    public function delete_entry($id) {
-        
+    public function delete_entry() {
+        $this->db->where('kocsiid', $this->input->get('id'));
+        return $this->db->delete('kocsik');
     }
 
     public function getAllKocsik() {
