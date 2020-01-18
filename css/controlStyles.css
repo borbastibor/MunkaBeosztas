@@ -1,5 +1,4 @@
-/* Lenyíló menü stílusok */
-.dropbutton {
+.popup-button {
     background-color: rgb(50,50,50);
     color: white;
     padding: 5px;
@@ -11,41 +10,15 @@
     filter: alpha(opacity=25);
 }
 
-.dropbutton:hover, .dropbutton:focus {
-    opacity: 1;
-}
-  
-.dropdown {
+.popup-container {
     position: fixed;
-    top: 5px;
-    left: 5px;
-    display: inline-block;
-    z-index: 1;
+
+    visibility: hidden;
 }
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: rgb(50,50,50);
-    min-width: 160px;
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: white;
-    padding: 6px 10px;
-    text-decoration: none;
-    font-size: 12px;
-    display: block;
-}
-
-.dropdown-content a:hover {
-    background-color: rgb(200,200,200);
-    color: black;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
+.popup-container:target {
+    visibility: visible;
+    opacity: 1;
 }
 
 /* Új létrehozása gomb stílusa */
@@ -64,42 +37,6 @@
 }
 
 .create-button:hover {
-    opacity: 1;
-}
-
-.leftshift-button {
-    position: fixed;
-    width: auto;
-    padding: 0px 5px;
-    bottom: 5px;
-    left: 5px;
-    background-color: rgb(50,50,50);
-    color: white;
-    opacity: 0.25;
-    font-size: 28px;
-    font-weight: bolder;
-    z-index: 1;
-}
-
-.leftshift-button:hover {
-    opacity: 1;
-}
-
-.rightshift-button {
-    position: fixed;
-    width: auto;
-    padding: 0px 5px;
-    bottom: 5px;
-    right: 5px;
-    background-color: rgb(50,50,50);
-    color: white;
-    opacity: 0.25;
-    font-size: 28px;
-    font-weight: bolder;
-    z-index: 1;
-}
-
-.rightshift-button:hover {
     opacity: 1;
 }
 
