@@ -23,3 +23,28 @@
     border: 2px solid black;
     vertical-align: top;
 }
+
+.listview-table {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    border-collapse: collapse;
+    border: 2px solid black;
+}
+
+.listview-rowheader {
+    padding: 3px;
+    margin: 0px;
+    background-color: grey;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.listview-cell {
+    padding: 3px;
+    margin: 0px;
+    background-color: white;
+    text-align: center;
+    border: 1px solid black;
+}

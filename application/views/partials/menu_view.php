@@ -1,5 +1,5 @@
 <?php
-anchor("kocsik/index","Kocsik");
-anchor("dolgozok/index", "Dolgozók");
-anchor("munkak/index", "Munkák");
+echo(anchor("kocsik/index","Kocsik",''));
+echo(anchor("dolgozok/index", "Dolgozók",''));
+echo(anchor("munkak/index", "Munkák",''));
 ?>
