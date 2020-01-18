@@ -51,9 +51,25 @@ class Kocsik extends CI_Controller {
 		
 	}
 
-	// Kiválasztott kocsi törlése
-	public function delete() {
-		
+	// Kiválasztott kocsi törlésének megerősítése
+	public function delete($id) {
+		$this->load->helper('form');
+		if ($id == null) {
+			redirect('kocsik/index');
+		}
+		$data['car'] = $this->Kocsik_model->getKocsiById($id);
+		$partialviews = [
+			'header' => $this->load->view('partials/header_view.php','', true),
+			'menu' => $this->load->view('partials/menu_view', '', true),
+			'content' => $this->load->view('admin/kocsik/kocsik_delete_view', $data, true),
+			'footer' => $this->load->view('partials/footer_view', '', true)
+		];
+		$this->load->view('public_template_view', $partialviews);
 	}
 
+	// Kiválasztott kocsi törlése
+	public function delete_confirm() {
+		$this->Kocsik_model->delete_entry(intval($this->input->post('id')));
+		redirect('kocsik/index');
+	}
 }

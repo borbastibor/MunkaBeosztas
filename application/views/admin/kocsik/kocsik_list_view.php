@@ -15,9 +15,9 @@
                     <td class="listview-cell"><?php echo($kocsi_item['tipus']); ?></td>
                     <td class="listview-cell"><?php echo($kocsi_item['rendszam']); ?></td>
                     <td class="listview-cell"><?php
-                        echo(anchor('kocsik/edit','Szerkeszt','id="'.$kocsi_item['kocsiid'].'"'));
+                        echo(anchor('kocsik/edit/'.$kocsi_item['kocsiid'],'Szerkeszt'));
                         echo('|');
-                        echo(anchor('kocsik/delete','Eltávolít','id="'.$kocsi_item['kocsiid'].'"'));
+                        echo(anchor('kocsik/delete/'.$kocsi_item['kocsiid'],'Eltávolít'));
                     ?></td>
                 </tr>
             <?php endforeach; ?>

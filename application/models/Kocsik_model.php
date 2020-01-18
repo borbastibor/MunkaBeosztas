@@ -18,14 +18,19 @@ class Kocsik_model extends CI_Model {
 
     }
 
-    public function delete_entry() {
-        $this->db->where('kocsiid', $this->input->get('id'));
+    public function delete_entry($id) {
+        $this->db->where('kocsiid', $id);
         return $this->db->delete('kocsik');
     }
 
     public function getAllKocsik() {
         $query = $this->db->get('kocsik');
         return $query->result_array();
+    }
+
+    public function getKocsiById($id) {
+        $query = $this->db->get_where('kocsik',array('kocsiid' => $id));
+        return $query->row();
     }
 }
 ?>
