@@ -4,15 +4,21 @@
     padding: 5px;
     font-size: 28px;
     font-weight: bold;
+    text-decoration: none;
     border: none;
     cursor: pointer;
     opacity: 0.25;
     filter: alpha(opacity=25);
 }
 
+.popup-button:hover {
+    opacity: 1;
+}
+
 .popup-container {
     position: fixed;
-
+    background-color: white;
+    border: 1px solid black;
     visibility: hidden;
 }
 

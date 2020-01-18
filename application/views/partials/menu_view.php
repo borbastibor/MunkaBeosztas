@@ -1,12 +1,5 @@
-<?php 
-if ($content != 'calendar_view') {
-
-} else {
-  ?>
-  <a class="popup-button" href="#datechooser">Let me Pop up</a>
-  <div id="#datechooser" class="popup-container">
-    
-  </div>
-  <?php
-}
+<?php
+anchor("kocsik/index","Kocsik");
+anchor("dolgozok/index", "Dolgozók");
+anchor("munkak/index", "Munkák");
 ?>

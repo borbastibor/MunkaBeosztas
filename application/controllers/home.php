@@ -11,16 +11,16 @@ class Home extends CI_Controller {
 	// Naptár nézet betöltése
 	public function index() {
 		$partialviews = [
-			'header' => $this->load->view('partials/header_view.php', true),
-			'menu' => $this->load->view('partials/menu_view', true),
-			'content' => $this->load->view('calendar_view', $data, true),
-			'footer' => 'partials/footer_view'
+			'header' => $this->load->view('partials/header_view','', true),
+			'menu' => $this->load->view('partials/menu_view','', true),
+			'content' => $this->load->view('calendar_view','', true),
+			'footer' => $this->load->view('partials/footer_view','', true)
 		];
 		$this->load->view('public_template_view', $partialviews);
 	}
 
 	public function authorizeAccessToAdmin() {
-		
+
 	}
 
 }
