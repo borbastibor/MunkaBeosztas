@@ -74,8 +74,8 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> 'sqlite:application/database/MunkaBeosztas.db',
-	'hostname' => 'localhost',
+	'dsn'	=> '',
+	'hostname' => 'sqlite:application/database/MunkaBeosztas.db',
 	'username' => '',
 	'password' => '',
 	'database' => '',

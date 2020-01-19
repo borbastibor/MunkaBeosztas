@@ -69,7 +69,7 @@ class Kocsik extends CI_Controller {
 
 	// Kiválasztott kocsi törlése
 	public function delete_confirm() {
-		$this->Kocsik_model->delete_entry(intval($this->input->post('id')));
+		$this->Kocsik_model->delete_entry($this->input->post('id'));
 		redirect('kocsik/index');
 	}
 }

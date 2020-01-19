@@ -8,6 +8,6 @@
         <label for="rendszam">Rendszám</label>
         <input type="text" name="rendszam" /><br />
         <input type="submit" name="submit" value="Mentés" />
-    </form>
+    <?php echo(form_close()); ?>
     </div>
 </div>
