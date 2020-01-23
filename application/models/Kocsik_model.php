@@ -33,5 +33,14 @@ class Kocsik_model extends CI_Model {
         $query = $this->db->get_where('kocsik',array('kocsiid' => $id));
         return $query->row();
     }
+
+    public function isValidRendszam($rendszam) {
+        $query = $this->db->get_where('kocsik',array('rendszam' => $rendszam));
+        if ($query->num_rows() > 0) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
 }
 ?>

@@ -26,18 +26,14 @@ class Kocsik extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
-		$data['kocsik'] = $this->Kocsik_model->getAllKocsik();
 		$partialviews = [
-			'header' => $this->load->view('partials/header_view.php','', true),
+			'header' => $this->load->view('partials/header_view.php', '', true),
 			'menu' => $this->load->view('partials/menu_view', '', true),
-			'content' => $this->load->view('admin/kocsik/kocsik_create_view', $data, true),
+			'content' => $this->load->view('admin/kocsik/kocsik_create_view', '', true),
 			'footer' => $this->load->view('partials/footer_view', '', true)
 		];
 
-		$this->form_validation->set_rules('tipus', 'Típus', 'required');
-    	$this->form_validation->set_rules('rendszam', 'Rendszám', 'required');
-
-		if ($this->form_validation->run() === FALSE)
+		if ($this->form_validation->run('kocsik') === FALSE)
     	{
         	$this->load->view('public_template_view', $partialviews);
     	} else {
@@ -68,18 +64,14 @@ class Kocsik extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
-		$data['kocsik'] = $this->Kocsik_model->getAllKocsik();
 		$partialviews = [
 			'header' => $this->load->view('partials/header_view.php','', true),
 			'menu' => $this->load->view('partials/menu_view', '', true),
-			'content' => $this->load->view('admin/kocsik/kocsik_create_view', $data, true),
+			'content' => $this->load->view('admin/kocsik/kocsik_edit_view', '', true),
 			'footer' => $this->load->view('partials/footer_view', '', true)
 		];
 
-		$this->form_validation->set_rules('tipus', 'Típus', 'required');
-    	$this->form_validation->set_rules('rendszam', 'Rendszám', 'required');
-
-		if ($this->form_validation->run() === FALSE)
+		if ($this->form_validation->run('kocsik') === FALSE)
     	{
         	$this->load->view('public_template_view', $partialviews);
     	} else {
@@ -87,7 +79,7 @@ class Kocsik extends CI_Controller {
 				'tipus' => $this->input->post('tipus'),
 				'rendszam' => $this->input->post('rendszam')
 			);
-			$this->Kocsik_model->update_entry($this->input->post('tipus'), $data);
+			$this->Kocsik_model->update_entry($this->input->post('id'), $data);
         	redirect('kocsik/index');
     	}
 	}
