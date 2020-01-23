@@ -4,9 +4,9 @@
     <div class="adminform-body">
     <?php echo form_open('kocsik/create'); ?>
         <label for="tipus">Típus</label>
-        <input type="text" name="tipus" /><br />
+        <input type="text" name="tipus" required/><br />
         <label for="rendszam">Rendszám</label>
-        <input type="text" name="rendszam" /><br />
+        <input type="text" name="rendszam" required/><br />
         <input type="submit" name="submit" value="Mentés" />
     <?php echo(form_close()); ?>
     </div>

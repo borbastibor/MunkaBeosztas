@@ -14,8 +14,9 @@ class Kocsik_model extends CI_Model {
         return $this->db->insert('kocsik', $data);
     }
 
-    public function update_entry() {
-
+    public function update_entry($id, $data) {
+        $this->db->where('kocsiid', $id);
+        return $this->db->update('kocsik', $data);
     }
 
     public function delete_entry($id) {
