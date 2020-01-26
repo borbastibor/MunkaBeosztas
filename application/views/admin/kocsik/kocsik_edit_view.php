@@ -1,8 +1,8 @@
 <div class="adminform-container">
     <div class="adminform-title">Gépjármű szerkesztése</div>
     <div class="adminform-body">
-    <?php echo validation_errors(); ?>
-    <?php echo form_open('kocsik/edit_save'); ?>
+    <?php echo(validation_errors()); ?>
+    <?php echo(form_open('kocsik/edit_save')); ?>
         <label for="tipus">Típus</label>
         <input type="text" name="tipus" value="<?php echo($car->tipus); ?>" /><br />
         <label for="rendszam">Rendszám</label>

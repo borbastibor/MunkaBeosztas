@@ -6,10 +6,10 @@ class Kocsik_model extends CI_Model {
         $this->load->database();
     }
 
-    public function insert_entry() {
+    public function insert_entry($tipus, $rendszam) {
         $data = array(
-            'tipus' => $this->input->post('tipus'),
-            'rendszam' => $this->input->post('rendszam')
+            'tipus' => $tipus,
+            'rendszam' => $rendszam
         );
         return $this->db->insert('kocsik', $data);
     }
@@ -34,13 +34,5 @@ class Kocsik_model extends CI_Model {
         return $query->row();
     }
 
-    public function isValidRendszam($rendszam) {
-        $query = $this->db->get_where('kocsik',array('rendszam' => $rendszam));
-        if ($query->num_rows() > 0) {
-            return FALSE;
-        } else {
-            return TRUE;
-        }
-    }
 }
 ?>

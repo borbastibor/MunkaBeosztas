@@ -23,7 +23,7 @@ body {
     margin: 0px;
     border-radius: 6px 6px 0px 0px;
     background-color: blue;
-    color: yellow;
+    color: white;
     font-weight: bold;
     font-size: 14px;
     text-align: center;
@@ -37,4 +37,8 @@ body {
     color: black;
     font-size: 12px;
     word-wrap: normal;
+}
+
+.error {
+    color: red;
 }

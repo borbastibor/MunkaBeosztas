@@ -1,5 +1,4 @@
 <?php
-
 $config = array(
     'kocsik' => array(
         array(
@@ -18,7 +17,13 @@ $config = array(
                 'required',
                 'exact_length[7]',
                 'regex_match[/^[A-Z]{3}-[0-9]{3}$/]',
-                array($this->Kocsik_model, 'isValidRendszam')
+                'is_unique[kocsik.rendszam]'
+            ),
+            'errors' => array(
+                'required' => 'Nincs rendszám megadva!',
+                'exact_length[7]' => 'Nem megfelelő formátum! (ABC-123)',
+                'regex_match[/^[A-Z]{3}-[0-9]{3}$/]' => 'Nem megfelelő formátum! (ABC-123)',
+                'is_unique[kocsik.rendszam]' => 'Már létezik ilyen rendszám!'
             )
         )
     ),
@@ -40,10 +45,10 @@ $config = array(
             'errors' => array(
                 'required' => 'Nincs családnév megadva!'
             )
-        ),
+        )
     )
-    
-
 );
 
+$config['error_prefix'] = '<p class="error">';
+$config['error_suffix'] = '</p>';
 ?>
