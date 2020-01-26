@@ -24,6 +24,18 @@ class Kocsik extends CI_Controller {
 	// Új kocsi létrehozása
 	public function create() {
 		$this->load->helper(array('form', 'url'));
+		$partialviews = [
+			'header' => $this->load->view('partials/header_view.php', '', TRUE),
+			'menu' => $this->load->view('partials/menu_view', '', TRUE),
+			'content' => $this->load->view('admin/kocsik/kocsik_create_view', '', TRUE),
+			'footer' => $this->load->view('partials/footer_view', '', TRUE)
+		];
+        $this->load->view('public_template_view', $partialviews);
+	}
+
+	// Létrehozott új gépjármű mentése
+	public function create_save() {
+		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
 
 		$partialviews = [
@@ -33,7 +45,7 @@ class Kocsik extends CI_Controller {
 			'footer' => $this->load->view('partials/footer_view', '', TRUE)
 		];
 
-		if ($this->form_validation->run('kocsik') == FALSE)
+		if ($this->form_validation->run('kocsik_rules') === FALSE)
     	{
         	$this->load->view('public_template_view', $partialviews);
     	} else {
@@ -45,7 +57,6 @@ class Kocsik extends CI_Controller {
 	// Kiválasztott kocsi szerkesztése
 	public function edit($id) {
 		$this->load->helper(array('form', 'url'));
-		$this->load->library('form_validation');
 		if ($id == null) {
 			redirect('kocsik/index');
 		}
@@ -72,7 +83,7 @@ class Kocsik extends CI_Controller {
 			'footer' => $this->load->view('partials/footer_view', '', TRUE)
 		];
 
-		if ($this->form_validation->run('kocsik') == FALSE)
+		if ($this->form_validation->run('kocsik_rules') == FALSE)
     	{
         	$this->load->view('public_template_view', $partialviews);
     	} else {

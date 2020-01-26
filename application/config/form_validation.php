@@ -1,6 +1,6 @@
 <?php
 $config = array(
-    'kocsik' => array(
+    'kocsik_rules' => array(
         array(
             'field' => 'tipus',
             'label' => 'Típus',
