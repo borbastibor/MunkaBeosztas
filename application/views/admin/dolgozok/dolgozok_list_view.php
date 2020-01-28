@@ -12,8 +12,8 @@
             <?php
             foreach ($dolgozok as $dolgozo_item):
                 ?><tr class="listview-row">
-                    <td class="listview-cell"><?php echo($dolgozo_item['tipus']); ?></td>
-                    <td class="listview-cell"><?php echo($dolgozo_item['rendszam']); ?></td>
+                    <td class="listview-cell"><?php echo($dolgozo_item['csaladnev']); ?></td>
+                    <td class="listview-cell"><?php echo($dolgozo_item['keresztnev']); ?></td>
                     <td class="listview-cell"><?php
                         echo(anchor('dolgozok/edit/'.$dolgozo_item['dolgozoid'],'Szerkeszt'));
                         echo('|');

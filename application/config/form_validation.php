@@ -28,23 +28,23 @@ $config = array(
 
     'dolgozok_rules' => array(
         array(
-            'field' => 'keresztnev',
-            'label' => 'Keresztnév',
-            'rules' => 'required',
-            'errors' => array(
-                'required' => 'Nincs keresztnév megadva!'
-            )
-        ),
-
-        array(
             'field' => 'csaladnev',
             'label' => 'Családnév',
             'rules' => 'required',
             'errors' => array(
                 'required' => 'Nincs családnév megadva!'
             )
+        ),
+
+        array(
+            'field' => 'keresztnev',
+            'label' => 'Keresztnév',
+            'rules' => 'required',
+            'errors' => array(
+                'required' => 'Nincs keresztnév megadva!'
+            )
         )
-            ),
+    ),
 
     'munkak_rules' => array(
         array(

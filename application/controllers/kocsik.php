@@ -13,7 +13,7 @@ class Kocsik extends CI_Controller {
 	public function index() {
 		$data['kocsik'] = $this->Kocsik_model->getAllKocsik();
 		$partialviews = [
-			'header' => $this->load->view('partials/header_view.php','', TRUE),
+			'header' => $this->load->view('partials/header_view','', TRUE),
 			'menu' => $this->load->view('partials/menu_view', '', TRUE),
 			'content' => $this->load->view('admin/kocsik/kocsik_list_view', $data, TRUE),
 			'footer' => $this->load->view('partials/footer_view', '', TRUE)
@@ -27,7 +27,7 @@ class Kocsik extends CI_Controller {
 		$this->load->library('form_validation');
 
 		$partialviews = [
-			'header' => $this->load->view('partials/header_view.php', '', TRUE),
+			'header' => $this->load->view('partials/header_view', '', TRUE),
 			'menu' => $this->load->view('partials/menu_view', '', TRUE),
 			'content' => $this->load->view('admin/kocsik/kocsik_create_view', '', TRUE),
 			'footer' => $this->load->view('partials/footer_view', '', TRUE)
@@ -50,7 +50,7 @@ class Kocsik extends CI_Controller {
 		}
 		$data['car'] = $this->Kocsik_model->getKocsiById($id);
 		$partialviews = [
-			'header' => $this->load->view('partials/header_view.php','', TRUE),
+			'header' => $this->load->view('partials/header_view','', TRUE),
 			'menu' => $this->load->view('partials/menu_view', '', TRUE),
 			'content' => $this->load->view('admin/kocsik/kocsik_edit_view', $data, TRUE),
 			'footer' => $this->load->view('partials/footer_view', '', TRUE)
@@ -65,7 +65,7 @@ class Kocsik extends CI_Controller {
 
 		$data['car'] = $this->Kocsik_model->getKocsiById($this->input->post('id'));
 		$partialviews = [
-			'header' => $this->load->view('partials/header_view.php','', TRUE),
+			'header' => $this->load->view('partials/header_view','', TRUE),
 			'menu' => $this->load->view('partials/menu_view', '', TRUE),
 			'content' => $this->load->view('admin/kocsik/kocsik_edit_view', $data, TRUE),
 			'footer' => $this->load->view('partials/footer_view', '', TRUE)
@@ -92,7 +92,7 @@ class Kocsik extends CI_Controller {
 		}
 		$data['car'] = $this->Kocsik_model->getKocsiById($id);
 		$partialviews = [
-			'header' => $this->load->view('partials/header_view.php', '', TRUE),
+			'header' => $this->load->view('partials/header_view', '', TRUE),
 			'menu' => $this->load->view('partials/menu_view', '', TRUE),
 			'content' => $this->load->view('admin/kocsik/kocsik_delete_view', $data, TRUE),
 			'footer' => $this->load->view('partials/footer_view', '', TRUE)
