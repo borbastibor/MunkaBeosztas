@@ -16,19 +16,17 @@ $config = array(
             'rules' => array(
                 'required',
                 'exact_length[7]',
-                'regex_match[/^[A-Z]{3}-[0-9]{3}$/]',
-                'is_unique[kocsik.rendszam]'
+                'regex_match[/^[A-Z]{3}-[0-9]{3}$/]'
             ),
             'errors' => array(
                 'required' => 'Nincs rendszám megadva!',
-                'exact_length[7]' => 'Nem megfelelő formátum! (ABC-123)',
-                'regex_match[/^[A-Z]{3}-[0-9]{3}$/]' => 'Nem megfelelő formátum! (ABC-123)',
-                'is_unique[kocsik.rendszam]' => 'Már létezik ilyen rendszám!'
+                'exact_length' => 'Nem megfelelő formátum! (ABC-123)',
+                'regex_match' => 'Nem megfelelő formátum! (ABC-123)'
             )
         )
     ),
 
-    'dolgozok' => array(
+    'dolgozok_rules' => array(
         array(
             'field' => 'keresztnev',
             'label' => 'Keresztnév',
@@ -44,6 +42,44 @@ $config = array(
             'rules' => 'required',
             'errors' => array(
                 'required' => 'Nincs családnév megadva!'
+            )
+        )
+            ),
+
+    'munkak_rules' => array(
+        array(
+            'field' => 'helyszin',
+            'label' => 'Helyszín',
+            'rules' => 'required',
+            'errors' => array(
+                'required' => 'Nincs helyszín megadva!'
+            )
+        ),
+
+        array(
+            'field' => 'idopont',
+            'label' => 'Időpont',
+            'rules' => 'required',
+            'errors' => array(
+                'required' => 'Nincs dátum megadva!'
+            )
+        ),
+
+        array(
+            'field' => 'leiras',
+            'label' => 'Leírás',
+            'rules' => 'required',
+            'errors' => array(
+                'required' => 'Nincs leírás megadva!'
+            )
+        ),
+
+        array(
+            'field' => 'kocsi',
+            'label' => 'Gépjármű',
+            'rules' => 'required',
+            'errors' => array(
+                'required' => 'Nincs gépjármű megadva!'
             )
         )
     )

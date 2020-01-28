@@ -42,10 +42,17 @@
     border: 1px solid black;
 }
 
+.listview-row {
+    background-color: white;
+}
+
+.listview-row:hover {
+    background-color: lightgoldenrodyellow;
+}
+
 .listview-cell {
     padding: 3px;
     margin: 0px;
-    background-color: white;
     text-align: center;
     border: 1px solid black;
 }

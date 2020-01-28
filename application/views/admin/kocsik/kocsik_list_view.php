@@ -11,7 +11,7 @@
             </tr>
             <?php
             foreach ($kocsik as $kocsi_item):
-                ?><tr>
+                ?><tr class="listview-row">
                     <td class="listview-cell"><?php echo($kocsi_item['tipus']); ?></td>
                     <td class="listview-cell"><?php echo($kocsi_item['rendszam']); ?></td>
                     <td class="listview-cell"><?php

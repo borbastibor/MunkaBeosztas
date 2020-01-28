@@ -2,11 +2,11 @@
     <div class="adminform-title">Gépjármű hozzáadása</div>
     <div class="adminform-body">
     <?php echo(validation_errors()); ?>
-    <?php echo(form_open('kocsik/create_save')); ?>
+    <?php echo(form_open('kocsik/create')); ?>
         <label for="tipus">Típus</label>
-        <input type="text" name="tipus" /><br />
+        <input type="text" name="tipus" value="<?php echo(set_value('tipus')); ?>"/><br />
         <label for="rendszam">Rendszám</label>
-        <input type="text" name="rendszam" /><br />
+        <input type="text" name="rendszam" value="<?php echo(set_value('rendszam')); ?>"/><br />
         <input type="submit" name="submit" value="Mentés" />
     <?php echo(form_close()); ?>
     </div>
