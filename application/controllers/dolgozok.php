@@ -37,7 +37,7 @@ class Dolgozok extends CI_Controller {
     	{
         	$this->load->view('public_template_view', $partialviews);
     	} else {
-        	$this->Kocsik_model->insert_entry($this->input->post('csnev'), $this->input->post('knev'));
+        	$this->Dolgozok_model->insert_entry($this->input->post('csnev'), $this->input->post('knev'));
         	redirect('dolgozok/index');
     	}
 	}
@@ -100,7 +100,7 @@ class Dolgozok extends CI_Controller {
 		$this->load->view('public_template_view', $partialviews);
 	}
 
-	// Kiválasztott kocsi törlése
+	// Kiválasztott dolgozó törlése
 	public function delete_confirm() {
 		$this->Dolgozok_model->delete_entry($this->input->post('id'));
 		redirect('dolgozok/index');

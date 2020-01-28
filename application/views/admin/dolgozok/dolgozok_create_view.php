@@ -2,7 +2,7 @@
     <div class="adminform-title">Dolgozó hozzáadása</div>
     <div class="adminform-body">
     <?php echo(validation_errors()); ?>
-    <?php echo(form_open('dolgozo/create')); ?>
+    <?php echo(form_open('dolgozok/create')); ?>
         <label for="csnev">Családnév</label>
         <input type="text" name="csnev" value="<?php echo(set_value('csnev')); ?>"/><br />
         <label for="knev">Keresztnév</label>
