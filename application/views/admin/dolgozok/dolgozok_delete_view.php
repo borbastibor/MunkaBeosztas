@@ -1,5 +1,8 @@
 <div class="adminform-container">
-    <div class="adminform-title">Dolgozó törlése</div>
+    <div class="adminform-title">
+        <span>Dolgozó törlése</span>
+        <?php echo(anchor('dolgozok/index','[X]',array('class' => 'cancel-button'))); ?>
+    </div>
     <div class="adminform-body">
         <p><strong>Családnév:</strong></p>
         <?php echo($worker->csaladnev); ?>

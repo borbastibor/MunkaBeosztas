@@ -7,6 +7,8 @@ class Kocsik extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('Kocsik_model');
+		$this->load->helper(array('form', 'url'));
+		$this->load->library('form_validation');
 	}
 
 	// Kocsiklista nézet betöltése
@@ -23,18 +25,15 @@ class Kocsik extends CI_Controller {
 
 	// Új kocsi létrehozása
 	public function create() {
-		$this->load->helper(array('form', 'url'));
-		$this->load->library('form_validation');
-
-		$partialviews = [
-			'header' => $this->load->view('partials/header_view', '', TRUE),
-			'menu' => $this->load->view('partials/menu_view', '', TRUE),
-			'content' => $this->load->view('admin/kocsik/kocsik_create_view', '', TRUE),
-			'footer' => $this->load->view('partials/footer_view', '', TRUE)
-		];
-
         if ($this->form_validation->run('kocsik_rules') == FALSE)
     	{
+			$data['errors'] = validation_errors();
+			$partialviews = [
+				'header' => $this->load->view('partials/header_view', '', TRUE),
+				'menu' => $this->load->view('partials/menu_view', '', TRUE),
+				'content' => $this->load->view('admin/kocsik/kocsik_create_view', $data, TRUE),
+				'footer' => $this->load->view('partials/footer_view', '', TRUE)
+			];
         	$this->load->view('public_template_view', $partialviews);
     	} else {
         	$this->Kocsik_model->insert_entry($this->input->post('tipus'), $this->input->post('rendszam'));
@@ -44,7 +43,6 @@ class Kocsik extends CI_Controller {
 
 	// Kiválasztott kocsi szerkesztése
 	public function edit($id) {
-		$this->load->helper(array('form', 'url'));
 		if ($id == null) {
 			redirect('kocsik/index');
 		}
@@ -60,19 +58,16 @@ class Kocsik extends CI_Controller {
 
 	// Kiválasztott kocsi mentése szerkesztés után
 	public function edit_save() {
-		$this->load->helper(array('form', 'url'));
-		$this->load->library('form_validation');
-
-		$data['car'] = $this->Kocsik_model->getKocsiById($this->input->post('id'));
-		$partialviews = [
-			'header' => $this->load->view('partials/header_view','', TRUE),
-			'menu' => $this->load->view('partials/menu_view', '', TRUE),
-			'content' => $this->load->view('admin/kocsik/kocsik_edit_view', $data, TRUE),
-			'footer' => $this->load->view('partials/footer_view', '', TRUE)
-		];
-
 		if ($this->form_validation->run('kocsik_rules') == FALSE)
     	{
+			$data['car'] = $this->Kocsik_model->getKocsiById($this->input->post('id'));
+			$data['errors'] = validation_errors();
+			$partialviews = [
+				'header' => $this->load->view('partials/header_view','', TRUE),
+				'menu' => $this->load->view('partials/menu_view', '', TRUE),
+				'content' => $this->load->view('admin/kocsik/kocsik_edit_view', $data, TRUE),
+				'footer' => $this->load->view('partials/footer_view', '', TRUE)
+			];
         	$this->load->view('public_template_view', $partialviews);
     	} else {
         	$data = array (
@@ -86,7 +81,6 @@ class Kocsik extends CI_Controller {
 
 	// Kiválasztott kocsi törlésének megerősítése
 	public function delete($id) {
-		$this->load->helper(array('form', 'url'));
 		if ($id == null) {
 			redirect('kocsik/index');
 		}

@@ -1,5 +1,8 @@
 <div class="adminform-container">
-    <div class="adminform-title">Dolgozók</div>
+    <div class="adminform-title">
+        <span>Dolgozók</span>
+        <?php echo(anchor('home/index','[X]',array('class' => 'cancel-button'))); ?>
+    </div>
     <div class="adminform-body">
         <?php echo(anchor('dolgozok/create','Új dolgozó','class="itemcreate-button"')); ?>
         <br />

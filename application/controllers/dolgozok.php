@@ -7,6 +7,8 @@ class Dolgozok extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('Dolgozok_model');
+		$this->load->helper(array('form', 'url'));
+		$this->load->library('form_validation');
 	}
 
 	// Dolgozóklista nézet betöltése
@@ -23,18 +25,15 @@ class Dolgozok extends CI_Controller {
 
 	// Új dolgozó létrehozása
 	public function create() {
-		$this->load->helper(array('form', 'url'));
-		$this->load->library('form_validation');
-
-		$partialviews = [
-			'header' => $this->load->view('partials/header_view', '', TRUE),
-			'menu' => $this->load->view('partials/menu_view', '', TRUE),
-			'content' => $this->load->view('admin/dolgozok/dolgozok_create_view', '', TRUE),
-			'footer' => $this->load->view('partials/footer_view', '', TRUE)
-		];
-
         if ($this->form_validation->run('dolgozok_rules') == FALSE)
     	{
+			$data['errors'] = validation_errors();
+			$partialviews = [
+				'header' => $this->load->view('partials/header_view', '', TRUE),
+				'menu' => $this->load->view('partials/menu_view', '', TRUE),
+				'content' => $this->load->view('admin/dolgozok/dolgozok_create_view', $data, TRUE),
+				'footer' => $this->load->view('partials/footer_view', '', TRUE)
+			];
         	$this->load->view('public_template_view', $partialviews);
     	} else {
         	$this->Dolgozok_model->insert_entry($this->input->post('csnev'), $this->input->post('knev'));
@@ -44,7 +43,6 @@ class Dolgozok extends CI_Controller {
 
 	// Kiválasztott dolgozó szerkesztése
 	public function edit($id) {
-		$this->load->helper(array('form', 'url'));
 		if ($id == null) {
 			redirect('dolgozok/index');
 		}
@@ -60,19 +58,16 @@ class Dolgozok extends CI_Controller {
 
 	// Kiválasztott dolgozó mentése szerkesztés után
 	public function edit_save() {
-		$this->load->helper(array('form', 'url'));
-		$this->load->library('form_validation');
-
-		$data['worker'] = $this->Dolgozok_model->getDolgozoById($this->input->post('id'));
-		$partialviews = [
-			'header' => $this->load->view('partials/header_view','', TRUE),
-			'menu' => $this->load->view('partials/menu_view', '', TRUE),
-			'content' => $this->load->view('admin/dolgozok/dolgozok_edit_view', $data, TRUE),
-			'footer' => $this->load->view('partials/footer_view', '', TRUE)
-		];
-
 		if ($this->form_validation->run('dolgozok_rules') == FALSE)
     	{
+			$data['worker'] = $this->Dolgozok_model->getDolgozoById($this->input->post('id'));
+			$data['errors'] = validation_errors();
+			$partialviews = [
+				'header' => $this->load->view('partials/header_view','', TRUE),
+				'menu' => $this->load->view('partials/menu_view', '', TRUE),
+				'content' => $this->load->view('admin/dolgozok/dolgozok_edit_view', $data, TRUE),
+				'footer' => $this->load->view('partials/footer_view', '', TRUE)
+			];
         	$this->load->view('public_template_view', $partialviews);
     	} else {
         	$data = array (
@@ -86,7 +81,6 @@ class Dolgozok extends CI_Controller {
 
 	// Kiválasztott dolgozó törlésének megerősítése
 	public function delete($id) {
-		$this->load->helper(array('form', 'url'));
 		if ($id == null) {
 			redirect('dolgozok/index');
 		}

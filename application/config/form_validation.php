@@ -20,8 +20,8 @@ $config = array(
             ),
             'errors' => array(
                 'required' => 'Nincs rendszám megadva!',
-                'exact_length' => 'Nem megfelelő formátum! (ABC-123)',
-                'regex_match' => 'Nem megfelelő formátum! (ABC-123)'
+                'exact_length' => 'A rendszám 7 karakter kell legyen! (ABC-123)',
+                'regex_match' => 'Nem megfelelő a rendszám formátum! (ABC-123)'
             )
         )
     ),

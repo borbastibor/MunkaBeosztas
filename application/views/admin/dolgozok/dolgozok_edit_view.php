@@ -1,7 +1,10 @@
 <div class="adminform-container">
-    <div class="adminform-title">Dolgozó szerkesztése</div>
+    <div class="adminform-title">
+        <span>Dolgozó szerkesztése</span>
+        <?php echo(anchor('dolgozok/index','[X]',array('class' => 'cancel-button'))); ?>
+    </div>
     <div class="adminform-body">
-    <?php echo(validation_errors()); ?>
+    <?php echo($errors); ?>
     <?php echo(form_open('dolgozok/edit_save')); ?>
         <label for="csnev">Családnév</label>
         <input type="text" name="csnev" value="<?php echo($worker->csaladnev); ?>" /><br />

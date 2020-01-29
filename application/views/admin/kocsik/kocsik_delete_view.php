@@ -1,5 +1,8 @@
 <div class="adminform-container">
-    <div class="adminform-title">Gépjármű törlése</div>
+    <div class="adminform-title">
+        <span>Gépjármű törlése</span>
+        <?php echo(anchor('kocsik/index','[X]',array('class' => 'cancel-button'))); ?>
+    </div>
     <div class="adminform-body">
         <p><strong>Gépjármű típusa:</strong></p>
         <?php echo($car->tipus); ?>

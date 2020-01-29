@@ -1,7 +1,10 @@
 <div class="adminform-container">
-    <div class="adminform-title">Gépjármű hozzáadása</div>
+    <div class="adminform-title">
+        <span>Gépjármű hozzáadása</span>
+        <?php echo(anchor('kocsik/index','[X]',array('class' => 'cancel-button'))); ?>
+    </div>
     <div class="adminform-body">
-    <?php echo(validation_errors()); ?>
+    <?php echo($errors); ?>
     <?php echo(form_open('kocsik/create')); ?>
         <label for="tipus">Típus</label>
         <input type="text" name="tipus" value="<?php echo(set_value('tipus')); ?>"/><br />

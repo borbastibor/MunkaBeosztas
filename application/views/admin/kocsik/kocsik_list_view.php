@@ -1,5 +1,8 @@
 <div class="adminform-container">
-    <div class="adminform-title">Gépjárművek</div>
+    <div class="adminform-title">
+        <span>Gépjárművek</span>
+        <?php echo(anchor('home/index','[X]',array('class' => 'cancel-button'))); ?>
+    </div>
     <div class="adminform-body">
         <?php echo(anchor('kocsik/create','Új gépjármű','class="itemcreate-button"')); ?>
         <br />
