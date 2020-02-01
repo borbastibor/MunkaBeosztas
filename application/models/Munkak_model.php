@@ -6,31 +6,43 @@ class Munkak_model extends CI_Model {
         $this->load->database();
     }
 
-    public function insert_entry($data) {
-        $data = array(
-            'tipus' => $tipus,
-            'rendszam' => $rendszam
+    public function insert_entry($alldata) {
+        $munkadata = array(
+            'helyszin' => $alldata['helyszin'],
+            'datum' => $alldata['datum'],
+            'leiras' => $alldata['leiras'],
+            'kocsiid' => $alldata['kocsiid']
         );
-        return $this->db->insert('munkak', $data);
+        $validInsert = $this->db->insert('munkak', $munkadata);
+        $newmunkaid = $this->db->insert_id();
+        // foreach ($data['dolgozok'] as $dolgozo) {
+            
+        // }
+        // return 
     }
 
     public function update_entry($id, $data) {
         $this->db->where('munkaid', $id);
-        return $this->db->update('kocsik', $data);
+        return $this->db->update('munkak', $data);
     }
 
     public function delete_entry($id) {
-        $this->db->where('kocsiid', $id);
-        return $this->db->delete('kocsik');
+        $this->db->where('munkaid', $id);
+        return $this->db->delete('munkak');
     }
 
-    public function getAllKocsik() {
-        $query = $this->db->get('kocsik');
+    public function getAllmunkak() {
+        $this->db->select('munkak.*, kocsik.*, dolgozok.*');
+        $this->db->from('munkak, dolgozok, kocsik');
+        $this->db->join('kocsik', 'kocsik.kocsiid = munkak.munkaid', 'left');
+        $this->db->join('munkadolgozo', 'munkadolgozo.munkaid = munkak.munkaid', 'left');
+        $this->db->join('dolgozok', 'munkadolgozo.dolgozoid = dolgozok.dolgozoid', 'left');
+        $query = $this->db->get();
         return $query->result_array();
     }
 
-    public function getKocsiById($id) {
-        $query = $this->db->get_where('kocsik',array('kocsiid' => $id));
+    public function getMunkaById($id) {
+        $query = $this->db->get_where('munkak',array('munkaid' => $id));
         return $query->row();
     }
 

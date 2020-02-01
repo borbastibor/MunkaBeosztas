@@ -13,9 +13,16 @@
         <label for="leiras">Leírás</label>
         <input type="text" name="leiras" placeholder="Adjon leírást a munkáról..." value="<?php echo(set_value('leiras')); ?>"/><br />
         <label for="kocsi">Gépjármű</label>
-        <input type="text" name="kocsi" value="<?php echo(set_value('kocsi')); ?>"/><br />
+        <?php
+        foreach ($kocsik as $kocsi_item):
+            $kocsi_array[$kocsi_item['kocsiid']] = $kocsi_item['tipus'].'('.$kocsi_item['rendszam'].')';
+        endforeach;
+        echo(form_dropdown('kocsi', $kocsi_array, ''));
+        ?><br />
         <div class="checkbox-list">
-            
+            <?php foreach ($dolgozok as $dolgozo_item):
+                echo(form_checkbox($dolgozo_item['dolgozoid'], $dolgozo_item['dolgozoid'].' '.$dolgozo_item['keresztnev'], FALSE));
+            endforeach; ?>
         </div>
         <input type="submit" name="submit" value="Mentés" />
     <?php echo(form_close()); ?>
