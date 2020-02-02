@@ -45,7 +45,7 @@ class Munkak extends CI_Controller {
 				'datum' => $this->input->post('datum'),
 				'leiras' => $this->input->post('leiras'),
 			);
-        	$this->Munkak_model->insert_entry();
+        	$this->Munkak_model->insert_entry($idata);
         	redirect('munkak/index');
     	}
 	}

@@ -4,13 +4,19 @@
         <?php echo(anchor('kocsik/index','[X]',array('class' => 'cancel-button'))); ?>
     </div>
     <div class="adminform-body">
-        <p><strong>Gépjármű típusa:</strong></p>
-        <?php echo($car->tipus); ?>
-        <p><strong>Gépjármű rendszáma:</strong></p>
-        <?php echo($car->rendszam); ?>
-        <?php echo(form_open('kocsik/delete_confirm')); ?>
-            <input type="hidden" name="id" value="<?php echo($car->kocsiid); ?>" />
-            <input type="submit" name="delete" value="Törlés" />
-        <?php echo(form_close()); ?>
+    <?php
+        echo('<p><strong>Gépjármű típusa:</strong></p>');
+        echo($car->tipus);
+        echo('<p><strong>Gépjármű rendszáma:</strong></p>');
+        echo($car->rendszam);
+        echo(form_open('kocsik/delete_confirm','',array(
+            'id' => $car->kocsiid
+        )));
+        echo(form_submit(array(
+            'name' => 'delete',
+            'value' => 'Törlés'
+        )));
+        echo(form_close());
+    ?>
     </div>
 </div>

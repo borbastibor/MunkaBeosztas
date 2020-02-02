@@ -4,14 +4,36 @@
         <?php echo(anchor('kocsik/index','[X]',array('class' => 'cancel-button'))); ?>
     </div>
     <div class="adminform-body">
-    <?php echo($errors); ?>
-    <?php echo(form_open('kocsik/edit_save')); ?>
-        <label for="tipus">Típus</label>
-        <input type="text" name="tipus" value="<?php echo($car->tipus); ?>" /><br />
-        <label for="rendszam">Rendszám</label>
-        <input type="text" name="rendszam" value="<?php echo($car->rendszam); ?>" /><br />
-        <input type="hidden" name="id" value="<?php echo($car->kocsiid); ?>" />
-        <input type="submit" name="submit" value="Mentés" />
-    <?php echo(form_close()); ?>
+    <?php
+        echo($errors);
+        echo(form_open('kocsik/edit_save','',array(
+            'id' => $car->kocsiid
+        )));
+
+        // Típus textbox
+        echo(form_label('Típus', 'tipus'));
+        echo(form_input(array(
+            'name' => 'tipus',
+            'id' => 'tipus',
+            'value' => $car->tipus,
+            'placeholder' => 'Írja be a típust...'
+        )));
+
+        // Rendszám textbox
+        echo(form_label('Rendszám', 'rendszam'));
+        echo(form_input(array(
+            'name' => 'rendszam',
+            'id' => 'rendszam',
+            'value' => $car->rendszam,
+            'placeholder' => 'Írja be a rendszámot (ABC-123)...'
+        )));
+
+        // Mentés gomb
+        echo(form_submit(array(
+            'name' => 'submit',
+            'value' => 'Mentés'
+        )));
+        echo(form_close());
+    ?>
     </div>
 </div>
