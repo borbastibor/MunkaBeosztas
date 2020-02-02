@@ -10,7 +10,7 @@ body {
 /* A szerkesztés, törlés és létrehozás lapok stílusai */
 .adminform-container {
     padding: 0px;
-    margin: 15px 25%;
+    margin: 15px 15%;
     background-color: white;
     border-radius:  6px;
     border: none;

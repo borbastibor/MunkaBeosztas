@@ -15,13 +15,15 @@
         <label for="kocsi">Gépjármű</label>
         <?php
         foreach ($kocsik as $kocsi_item):
-            $kocsi_array[$kocsi_item['kocsiid']] = $kocsi_item['tipus'].'('.$kocsi_item['rendszam'].')';
+            $kocsi_array[$kocsi_item['kocsiid']] = $kocsi_item['tipus'].' ('.$kocsi_item['rendszam'].')';
         endforeach;
         echo(form_dropdown('kocsi', $kocsi_array, ''));
         ?><br />
+        <label>Dolgozók</label>
         <div class="checkbox-list">
             <?php foreach ($dolgozok as $dolgozo_item):
-                echo(form_checkbox($dolgozo_item['dolgozoid'], $dolgozo_item['dolgozoid'].' '.$dolgozo_item['keresztnev'], FALSE));
+                echo(form_checkbox($dolgozo_item['dolgozoid'], $dolgozo_item['dolgozoid'], FALSE));
+                echo($dolgozo_item['csaladnev'].' '.$dolgozo_item['keresztnev'].'<br />');
             endforeach; ?>
         </div>
         <input type="submit" name="submit" value="Mentés" />

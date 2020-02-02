@@ -34,7 +34,7 @@ class Munkak_model extends CI_Model {
     public function getAllmunkak() {
         $this->db->select('munkak.*, kocsik.*, dolgozok.*');
         $this->db->from('munkak, dolgozok, kocsik');
-        $this->db->join('kocsik', 'kocsik.kocsiid = munkak.munkaid', 'left');
+        $this->db->join('kocsik', 'kocsik.kocsiid = munkak.kocsiid', 'left');
         $this->db->join('munkadolgozo', 'munkadolgozo.munkaid = munkak.munkaid', 'left');
         $this->db->join('dolgozok', 'munkadolgozo.dolgozoid = dolgozok.dolgozoid', 'left');
         $query = $this->db->get();

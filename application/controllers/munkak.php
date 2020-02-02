@@ -15,7 +15,7 @@ class Munkak extends CI_Controller {
 
 	// Munkáklista nézet betöltése
 	public function index() {
-		$data['munkak'] = $this->Munkak_model->getAllMunkak();
+		$data['munkak'] = ''; //$this->Munkak_model->getAllMunkak();
 		$partialviews = [
 			'header' => $this->load->view('partials/header_view','', TRUE),
 			'menu' => $this->load->view('partials/menu_view', '', TRUE),
@@ -40,6 +40,11 @@ class Munkak extends CI_Controller {
 			];
         	$this->load->view('public_template_view', $partialviews);
     	} else {
+			$idata = array(
+				'helyszin' => $this->input->post('helyszin'),
+				'datum' => $this->input->post('datum'),
+				'leiras' => $this->input->post('leiras'),
+			);
         	$this->Munkak_model->insert_entry();
         	redirect('munkak/index');
     	}
