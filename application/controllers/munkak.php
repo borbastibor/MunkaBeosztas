@@ -13,9 +13,9 @@ class Munkak extends CI_Controller {
 		$this->load->library('form_validation');
 	}
 
-	// Munkáklista nézet betöltése
+	// Munkák listanézet betöltése
 	public function index() {
-		$data['munkak'] = ''; //$this->Munkak_model->getAllMunkak();
+		$data['munkak'] = $this->Munkak_model->getAllMunkak();
 		$partialviews = [
 			'header' => $this->load->view('partials/header_view','', TRUE),
 			'menu' => $this->load->view('partials/menu_view', '', TRUE),

@@ -19,7 +19,12 @@
                     <td class="listview-cell"><?php echo($munka_item['helyszin']); ?></td>
                     <td class="listview-cell"><?php echo($munka_item['leiras']); ?></td>
                     <td class="listview-cell"><?php echo($munka_item['gepjarmu']); ?></td>
-                    <td class="listview-cell"><?php echo($munka_item['dolgozok']); ?></td>
+                    <td class="listview-cell">
+                    <?php
+                        foreach ($munka_item['dolgozok'] as $dolgozo_item) {
+                            echo($dolgozo_item['csaladnev'].' '.$dolgozo_item['keresztnev']);
+                        }    
+                    ?></td>
                     <td class="listview-cell"><?php
                         echo(anchor('munkak/edit/'.$munka_item['munkaid'],'Szerkeszt'));
                         echo('|');
