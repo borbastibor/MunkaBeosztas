@@ -44,7 +44,15 @@ class Munkak extends CI_Controller {
 				'helyszin' => $this->input->post('helyszin'),
 				'datum' => $this->input->post('datum'),
 				'leiras' => $this->input->post('leiras'),
+				'kocsi' => $this->input->post('kocsi'),
+				'dolgozok' => array(),
+				'utemezes' => $this->input->post('utemezes')
 			);
+			foreach ($this->input->post('dolgozo_checkbox') as $checkbox_item) {
+				if ($checkbox_item['checked']) {
+					array_push($idata['dolgozok'],$checkbox_item['value']);
+				}
+			}
         	$this->Munkak_model->insert_entry($idata);
         	redirect('munkak/index');
     	}

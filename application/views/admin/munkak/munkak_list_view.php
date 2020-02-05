@@ -15,14 +15,14 @@
             <?php
             foreach ($munkak as $munka_item):
                 ?><tr class="listview-row">
-                    <td class="listview-cell"><?php echo($munka_item['idopont']); ?></td>
+                    <td class="listview-cell"><?php echo($munka_item['datum']); ?></td>
                     <td class="listview-cell"><?php echo($munka_item['helyszin']); ?></td>
                     <td class="listview-cell"><?php echo($munka_item['leiras']); ?></td>
-                    <td class="listview-cell"><?php echo($munka_item['gepjarmu']); ?></td>
+                    <td class="listview-cell"><?php echo($munka_item['tipus'].' ('.$munka_item['rendszam'].')'); ?></td>
                     <td class="listview-cell">
                     <?php
                         foreach ($munka_item['dolgozok'] as $dolgozo_item) {
-                            echo($dolgozo_item['csaladnev'].' '.$dolgozo_item['keresztnev']);
+                            echo($dolgozo_item['csaladnev'].' '.$dolgozo_item['keresztnev'].'<br />');
                         }    
                     ?></td>
                     <td class="listview-cell"><?php

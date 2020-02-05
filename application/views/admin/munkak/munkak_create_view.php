@@ -47,14 +47,20 @@
         echo('<div class="checkbox-list">');
         foreach ($dolgozok as $dolgozo_item):
             echo(form_checkbox(array(
-                'name' => $dolgozo_item['dolgozoid'],
-                'id' => $dolgozo_item['dolgozoid'],
-                'value' => $dolgozo_item['csaladnev'].' '.$dolgozo_item['keresztnev'],
+                'name' => 'dolgozo_checkbox[]',
+                'value' => $dolgozo_item['dolgozoid'],
                 'checked' => FALSE
             )));
             echo($dolgozo_item['csaladnev'].' '.$dolgozo_item['keresztnev'].'<br />');
         endforeach;
         echo('</div>');
+
+        // Ütemezés legördülő lista
+        echo(form_label('Munkaütemezés', 'utemezes'));
+        echo(form_dropdown('utemezes', array(
+            '0' => 'Rögzített munka',
+            '1' => 'Átütemezhető munka'
+        ), '1'));
 
         // Mentés gomb
         echo(form_submit(array(

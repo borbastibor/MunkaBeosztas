@@ -11,14 +11,17 @@ class Munkak_model extends CI_Model {
             'helyszin' => $alldata['helyszin'],
             'datum' => $alldata['datum'],
             'leiras' => $alldata['leiras'],
-            'kocsiid' => $alldata['kocsiid']
+            'kocsiid' => $alldata['kocsi'],
+            'utemezes' => $alldata['utemezes']
         );
-        $validInsert = $this->db->insert('munkak', $munkadata);
+        $this->db->insert('munkak', $munkadata);
         $newmunkaid = $this->db->insert_id();
-        // foreach ($data['dolgozok'] as $dolgozo) {
-            
-        // }
-        // return 
+        foreach ($alldata['dolgozok'] as $dolgozo_item) {
+            $this->db->insert('munkadolgozo', array(
+                'munkaid' => $newmunkaid,
+                'dolgozoid' => $dolgozo_item
+            ));
+        }
     }
 
     public function update_entry($id, $data) {
@@ -28,6 +31,7 @@ class Munkak_model extends CI_Model {
 
     public function delete_entry($id) {
         $this->db->where('munkaid', $id);
+        // Csacade törlés a munkadolgozo táblában
         return $this->db->delete('munkak');
     }
 

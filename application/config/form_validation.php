@@ -57,8 +57,8 @@ $config = array(
         ),
 
         array(
-            'field' => 'idopont',
-            'label' => 'Időpont',
+            'field' => 'datum',
+            'label' => 'Dátum',
             'rules' => 'required',
             'errors' => array(
                 'required' => 'Nincs dátum megadva!'
