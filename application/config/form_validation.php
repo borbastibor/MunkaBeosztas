@@ -31,6 +31,26 @@ $config = array(
                 'required' => 'Nincs feladat megadva!'
             )
         )
+    ),
+
+    'gkfutasok_rules' => array(
+        array(
+            'field' => 'datum',
+            'label' => 'Dátum',
+            'rules' => 'required',
+            'errors' => array(
+                'required' => 'Nincs dátum megadva!'
+            )
+        ),
+
+        array(
+            'field' => 'gepkocsi',
+            'label' => 'Gépkocsi',
+            'rules' => 'required',
+            'errors' => array(
+                'required' => 'Nincs gépkocsi kiválasztva!'
+            )
+        )
     )
 );
 

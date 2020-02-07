@@ -6,7 +6,7 @@ class Dolgozok_model extends CI_Model {
         $this->load->database();
     }
 
-    public function insert_entry($csaladnev, $keresztnev) {
+    public function insert_entry($dolgozonev) {
         return $this->db->insert('k_dolgozo', array('dolgozo_nev' => $dolgozonev));
     }
 
