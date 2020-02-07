@@ -10,6 +10,7 @@
                 <th class="listview-rowheader">Leírás</th>
                 <th class="listview-rowheader">Gépjármű</th>
                 <th class="listview-rowheader">Dolgozók</th>
+                <th class="listview-rowheader">Ütemezés</th>
                 <th class="listview-rowheader">Lehetőségek</th>
             </tr>
             <?php
@@ -21,10 +22,20 @@
                     <td class="listview-cell"><?php echo($munka_item['tipus'].' ('.$munka_item['rendszam'].')'); ?></td>
                     <td class="listview-cell">
                     <?php
-                        foreach ($munka_item['dolgozok'] as $dolgozo_item) {
-                            echo($dolgozo_item['csaladnev'].' '.$dolgozo_item['keresztnev'].'<br />');
+                        foreach ($munkak as $innerMitem) {
+                            if ($innerMitem['munkaid'] == $munka_item['munkaid']) {
+                                echo($munka_item['csaladnev'].' '.$munka_item['keresztnev']);
+                            }
                         }    
-                    ?></td>
+                    ?>
+                    </td>
+                    <?php
+                        if ($munka_item['utemezes'] == 0) {
+		                    echo('<td>Nem</td>');
+	                    } else {
+		                    echo('<td>Igen</td>');
+                        }
+                    ?>
                     <td class="listview-cell"><?php
                         echo(anchor('munkak/edit/'.$munka_item['munkaid'],'Szerkeszt'));
                         echo('|');
