@@ -36,7 +36,7 @@ class Dolgozok extends CI_Controller {
 			];
         	$this->load->view('public_template_view', $partialviews);
     	} else {
-        	$this->Dolgozok_model->insert_entry($this->input->post('csnev'), $this->input->post('knev'));
+        	$this->Dolgozok_model->insert_entry($this->input->post('dolgozonev'));
         	redirect('dolgozok/index');
     	}
 	}

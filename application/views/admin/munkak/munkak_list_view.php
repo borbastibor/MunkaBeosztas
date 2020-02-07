@@ -1,45 +1,21 @@
 <div class="adminform-container">
-    <div class="adminform-title">Munkák</div>
+    <div class="adminform-title">Feladatok</div>
     <div class="adminform-body">
         <?php echo(anchor('munkak/create','Új munka','class="itemcreate-button"')); ?>
         <br />
         <table class="listview-table">
             <tr>
-                <th class="listview-rowheader">Időpont</th>
-                <th class="listview-rowheader">Helyszín</th>
-                <th class="listview-rowheader">Leírás</th>
-                <th class="listview-rowheader">Gépjármű</th>
-                <th class="listview-rowheader">Dolgozók</th>
-                <th class="listview-rowheader">Ütemezés</th>
+                <th class="listview-rowheader">Feladat</th>
                 <th class="listview-rowheader">Lehetőségek</th>
             </tr>
             <?php
             foreach ($munkak as $munka_item):
                 ?><tr class="listview-row">
-                    <td class="listview-cell"><?php echo($munka_item['datum']); ?></td>
-                    <td class="listview-cell"><?php echo($munka_item['helyszin']); ?></td>
-                    <td class="listview-cell"><?php echo($munka_item['leiras']); ?></td>
-                    <td class="listview-cell"><?php echo($munka_item['tipus'].' ('.$munka_item['rendszam'].')'); ?></td>
-                    <td class="listview-cell">
-                    <?php
-                        foreach ($munkak as $innerMitem) {
-                            if ($innerMitem['munkaid'] == $munka_item['munkaid']) {
-                                echo($munka_item['csaladnev'].' '.$munka_item['keresztnev']);
-                            }
-                        }    
-                    ?>
-                    </td>
-                    <?php
-                        if ($munka_item['utemezes'] == 0) {
-		                    echo('<td>Nem</td>');
-	                    } else {
-		                    echo('<td>Igen</td>');
-                        }
-                    ?>
+                    <td class="listview-cell"><?php echo($munka_item['feladat_leiras']); ?></td>
                     <td class="listview-cell"><?php
-                        echo(anchor('munkak/edit/'.$munka_item['munkaid'],'Szerkeszt'));
+                        echo(anchor('munkak/edit/'.$munka_item['feladat_id'],'Szerkeszt'));
                         echo('|');
-                        echo(anchor('munkak/delete/'.$munka_item['munkaid'],'Eltávolít'));
+                        echo(anchor('munkak/delete/'.$munka_item['feladat_id'],'Eltávolít'));
                     ?></td>
                 </tr>
             <?php endforeach; ?>

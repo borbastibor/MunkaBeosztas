@@ -7,25 +7,16 @@
     <?php
         echo($errors);
         echo(form_open('dolgozok/edit_save','',array(
-            'id' => $worker->dolgozoid
+            'id' => $worker->dolgozo_id
         )));
 
-        // Családnév textbox
-        echo(form_label('Családnév', 'csnev'));
+        // Dolgozó neve textbox
+        echo(form_label('Dolgozó neve', 'dolgozonev'));
         echo(form_input(array(
-            'name' => 'csnev',
-            'id' => 'csnev',
-            'value' => set_value($worker->csaladnev),
-            'placeholder' => 'Írja be a családnevet...'
-        )));
-
-        // Keresztnév textbox
-        echo(form_label('Keresztnév', 'knev'));
-        echo(form_input(array(
-            'name' => 'knev',
-            'id' => 'knev',
-            'value' => set_value($worker->keresztnev),
-            'placeholder' => 'Írja be a keresztnevet...'
+            'name' => 'dolgozonev',
+            'id' => 'dolgozonev',
+            'value' => set_value($worker->dolgozo_nev),
+            'placeholder' => 'Írja be a dolgozó nevét...'
         )));
 
         // Mentés gomb

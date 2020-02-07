@@ -5,12 +5,10 @@
     </div>
     <div class="adminform-body">
     <?php
-        echo('<p><strong>Családnév:</strong></p>');
-        echo($worker->csaladnev);
-        echo('<p><strong>Keresztnév:</strong></p>');
-        echo($worker->keresztnev);
+        echo('<p><strong>Dolgozó neve:</strong></p>');
+        echo($worker->dolgozo_nev);
         echo(form_open('dolgozok/delete_confirm','',array(
-            'id' => $worker->dolgozoid
+            'id' => $worker->dolgozo_id
         )));
         echo(form_submit(array(
             'name' => 'delete',

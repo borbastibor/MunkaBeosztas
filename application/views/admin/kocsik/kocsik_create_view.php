@@ -1,6 +1,6 @@
 <div class="adminform-container">
     <div class="adminform-title">
-        <span>Gépjármű hozzáadása</span>
+        <span>Gépkocsi hozzáadása</span>
         <?php echo(anchor('kocsik/index','[X]',array('class' => 'cancel-button'))); ?>
     </div>
     <div class="adminform-body">
@@ -8,22 +8,13 @@
         echo($errors);
         echo(form_open('kocsik/create'));
 
-        // Típus textbox
-        echo(form_label('Típus', 'tipus'));
+        // Gépkocsi textbox
+        echo(form_label('Gépkocsi', 'gepkocsi'));
         echo(form_input(array(
-            'name' => 'tipus',
-            'id' => 'tipus',
-            'value' => set_value('tipus'),
-            'placeholder' => 'Írja be a típust...'
-        )));
-
-        // Rendszám textbox
-        echo(form_label('Rendszám', 'rendszam'));
-        echo(form_input(array(
-            'name' => 'rendszam',
-            'id' => 'rendszam',
-            'value' => set_value('rendszam'),
-            'placeholder' => 'Írja be a rendszámot (ABC-123)...'
+            'name' => 'gepkocsi',
+            'id' => 'gepkocsi',
+            'value' => set_value('gepkocsi'),
+            'placeholder' => 'Írja be a típust és rendszámot...'
         )));
 
         // Mentés gomb

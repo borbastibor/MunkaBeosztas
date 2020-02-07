@@ -1,31 +1,22 @@
 <div class="adminform-container">
     <div class="adminform-title">
-        <span>Gépjármű szerkesztése</span>
+        <span>Gépkocsi szerkesztése</span>
         <?php echo(anchor('kocsik/index','[X]',array('class' => 'cancel-button'))); ?>
     </div>
     <div class="adminform-body">
     <?php
         echo($errors);
         echo(form_open('kocsik/edit_save','',array(
-            'id' => $car->kocsiid
+            'id' => $car->gk_id
         )));
 
-        // Típus textbox
-        echo(form_label('Típus', 'tipus'));
+        // Gépkocsi textbox
+        echo(form_label('Gépkocsi', 'gepkocsi'));
         echo(form_input(array(
-            'name' => 'tipus',
-            'id' => 'tipus',
-            'value' => $car->tipus,
-            'placeholder' => 'Írja be a típust...'
-        )));
-
-        // Rendszám textbox
-        echo(form_label('Rendszám', 'rendszam'));
-        echo(form_input(array(
-            'name' => 'rendszam',
-            'id' => 'rendszam',
-            'value' => $car->rendszam,
-            'placeholder' => 'Írja be a rendszámot (ABC-123)...'
+            'name' => 'gepkocsi',
+            'id' => 'gepkocsi',
+            'value' => $car->gepkocsi,
+            'placeholder' => 'Írja be a típust és rendszámot...'
         )));
 
         // Mentés gomb
