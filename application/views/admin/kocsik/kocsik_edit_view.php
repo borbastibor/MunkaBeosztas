@@ -6,9 +6,7 @@
     <div class="adminform-body">
     <?php
         echo($errors);
-        echo(form_open('kocsik/edit_save','',array(
-            'id' => $car->gk_id
-        )));
+        echo(form_open('kocsik/edit_save','',array('id' => $car->gk_id)));
 
         // Gépkocsi textbox
         echo(form_label('Gépkocsi', 'gepkocsi'));

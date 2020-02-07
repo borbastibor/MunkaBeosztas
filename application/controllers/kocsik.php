@@ -47,6 +47,7 @@ class Kocsik extends CI_Controller {
 			redirect('kocsik/index');
 		}
 		$data['car'] = $this->Kocsik_model->getKocsiById($id);
+		$data['errors'] = null;
 		$partialviews = [
 			'header' => $this->load->view('partials/header_view','', TRUE),
 			'menu' => $this->load->view('partials/menu_view', '', TRUE),

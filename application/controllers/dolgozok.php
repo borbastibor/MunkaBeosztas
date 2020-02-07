@@ -47,6 +47,7 @@ class Dolgozok extends CI_Controller {
 			redirect('dolgozok/index');
 		}
 		$data['worker'] = $this->Dolgozok_model->getDolgozoById($id);
+		$data['errors'] = null;
 		$partialviews = [
 			'header' => $this->load->view('partials/header_view','', TRUE),
 			'menu' => $this->load->view('partials/menu_view', '', TRUE),
@@ -70,7 +71,7 @@ class Dolgozok extends CI_Controller {
 			];
         	$this->load->view('public_template_view', $partialviews);
     	} else {
-        	$data = array ('dolgozonev' => $this->input->post('dolgozonev'));
+        	$data = array ('dolgozo_nev' => $this->input->post('dolgozonev'));
 			$this->Dolgozok_model->update_entry($this->input->post('id'), $data);
         	redirect('dolgozok/index');
     	}

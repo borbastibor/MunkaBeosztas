@@ -24,7 +24,7 @@ $config = array(
 
     'munkak_rules' => array(
         array(
-            'field' => 'leiras',
+            'field' => 'feladat',
             'label' => 'Feladat',
             'rules' => 'required',
             'errors' => array(

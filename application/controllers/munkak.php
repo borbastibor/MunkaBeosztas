@@ -47,6 +47,7 @@ class Munkak extends CI_Controller {
 			redirect('munkak/index');
 		}
 		$data['munka'] = $this->Munkak_model->getMunkaById($id);
+		$data['errors'] = null;
 		$partialviews = [
 			'header' => $this->load->view('partials/header_view','', TRUE),
 			'menu' => $this->load->view('partials/menu_view', '', TRUE),
