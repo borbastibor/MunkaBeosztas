@@ -2,84 +2,33 @@
 $config = array(
     'kocsik_rules' => array(
         array(
-            'field' => 'tipus',
-            'label' => 'Típus',
+            'field' => 'gepkocsi',
+            'label' => 'Gépkocsi',
             'rules' => 'required',
             'errors' => array(
-                'required' => 'Nincs típus megadva!'
-            )
-        ),
-    
-        array(
-            'field' => 'rendszam',
-            'label' => 'Rendszám',
-            'rules' => array(
-                'required',
-                'exact_length[7]',
-                'regex_match[/^[A-Z]{3}-[0-9]{3}$/]'
-            ),
-            'errors' => array(
-                'required' => 'Nincs rendszám megadva!',
-                'exact_length' => 'A rendszám 7 karakter kell legyen! (ABC-123)',
-                'regex_match' => 'Nem megfelelő a rendszám formátum! (ABC-123)'
+                'required' => 'Nincs gépkocsi megadva!'
             )
         )
     ),
 
     'dolgozok_rules' => array(
         array(
-            'field' => 'csaladnev',
-            'label' => 'Családnév',
+            'field' => 'dolgozonev',
+            'label' => 'Dolgozó neve',
             'rules' => 'required',
             'errors' => array(
-                'required' => 'Nincs családnév megadva!'
-            )
-        ),
-
-        array(
-            'field' => 'keresztnev',
-            'label' => 'Keresztnév',
-            'rules' => 'required',
-            'errors' => array(
-                'required' => 'Nincs keresztnév megadva!'
+                'required' => 'Nincs név megadva!'
             )
         )
     ),
 
     'munkak_rules' => array(
         array(
-            'field' => 'helyszin',
-            'label' => 'Helyszín',
-            'rules' => 'required',
-            'errors' => array(
-                'required' => 'Nincs helyszín megadva!'
-            )
-        ),
-
-        array(
-            'field' => 'datum',
-            'label' => 'Dátum',
-            'rules' => 'required',
-            'errors' => array(
-                'required' => 'Nincs dátum megadva!'
-            )
-        ),
-
-        array(
             'field' => 'leiras',
-            'label' => 'Leírás',
+            'label' => 'Feladat',
             'rules' => 'required',
             'errors' => array(
-                'required' => 'Nincs leírás megadva!'
-            )
-        ),
-
-        array(
-            'field' => 'kocsi',
-            'label' => 'Gépjármű',
-            'rules' => 'required',
-            'errors' => array(
-                'required' => 'Nincs gépjármű megadva!'
+                'required' => 'Nincs feladat megadva!'
             )
         )
     )

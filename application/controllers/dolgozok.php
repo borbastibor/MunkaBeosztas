@@ -70,10 +70,7 @@ class Dolgozok extends CI_Controller {
 			];
         	$this->load->view('public_template_view', $partialviews);
     	} else {
-        	$data = array (
-				'csaladnev' => $this->input->post('csnev'),
-				'keresztnev' => $this->input->post('knev')
-			);
+        	$data = array ('dolgozonev' => $this->input->post('dolgozonev'));
 			$this->Dolgozok_model->update_entry($this->input->post('id'), $data);
         	redirect('dolgozok/index');
     	}

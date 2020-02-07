@@ -6,31 +6,27 @@ class Kocsik_model extends CI_Model {
         $this->load->database();
     }
 
-    public function insert_entry($tipus, $rendszam) {
-        $data = array(
-            'tipus' => $tipus,
-            'rendszam' => $rendszam
-        );
-        return $this->db->insert('kocsik', $data);
+    public function insert_entry($gepkocsi) {
+        return $this->db->insert('k_gepkocsi', array('gepkocsi' => $gepkocsi));
     }
 
     public function update_entry($id, $data) {
-        $this->db->where('kocsiid', $id);
-        return $this->db->update('kocsik', $data);
+        $this->db->where('gk_id', $id);
+        return $this->db->update('k_gepkocsi', $data);
     }
 
     public function delete_entry($id) {
-        $this->db->where('kocsiid', $id);
-        return $this->db->delete('kocsik');
+        $this->db->where('gk_id', $id);
+        return $this->db->delete('k_gepkocsi');
     }
 
     public function getAllKocsik() {
-        $query = $this->db->get('kocsik');
+        $query = $this->db->get('k_gepkocsi');
         return $query->result_array();
     }
 
     public function getKocsiById($id) {
-        $query = $this->db->get_where('kocsik',array('kocsiid' => $id));
+        $query = $this->db->get_where('k_gepkocsi',array('gk_id' => $id));
         return $query->row();
     }
 

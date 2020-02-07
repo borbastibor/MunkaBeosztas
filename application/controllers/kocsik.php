@@ -36,7 +36,7 @@ class Kocsik extends CI_Controller {
 			];
         	$this->load->view('public_template_view', $partialviews);
     	} else {
-        	$this->Kocsik_model->insert_entry($this->input->post('tipus'), $this->input->post('rendszam'));
+        	$this->Kocsik_model->insert_entry($this->input->post('gepkocsi'));
         	redirect('kocsik/index');
     	}
 	}
@@ -70,10 +70,7 @@ class Kocsik extends CI_Controller {
 			];
         	$this->load->view('public_template_view', $partialviews);
     	} else {
-        	$data = array (
-				'tipus' => $this->input->post('tipus'),
-				'rendszam' => $this->input->post('rendszam')
-			);
+        	$data = array ('gepkocsi' => $this->input->post('gepkocsi'));
 			$this->Kocsik_model->update_entry($this->input->post('id'), $data);
         	redirect('kocsik/index');
     	}
