@@ -21,8 +21,15 @@ class Gkfutas_model extends CI_Model {
     }
 
     public function getAllGkfutas() {
-        //$query = $this->db->get('k_dolgozo');
-        //return $query->result_array();
+        $this->db->select('gf.gk_futas_id, gf.datum, k.gepkocsi, d.dolgozo_nev, fk.utemezheto, f.feladat_leiras');
+        $this->db->from('w_gepkocsi_futas gf');
+        $this->db->join('w_dolgozo_kikuld dk', 'gf.gk_futas_id = dk.gk_futas_id', 'left');
+        $this->db->join('k_dolgozo d', 'dk.dolgozo_id = d.dolgozo_id', 'left');
+        $this->db->join('w_feladat_kiad fk', 'gf.gk_futas_id = fk.gk_futas_id', 'left');
+        $this->db->join('k_feladat f', 'fk.feladat_id = f.feladat_id', 'left');
+        $this->db->join('k_gepkocsi k', 'gf.gk_id = k.gk_id', 'inner');
+        $query = $this->db->get();
+        return $query->result_array();
     }
 
     public function getGkfutasById($id) {

@@ -13,7 +13,7 @@ class Gkfutas extends CI_Controller {
 
 	// Gépkocsifutás listanézet betöltése
 	public function index() {
-		$data['futasok'] = $this->Munkak_model->getAllGkfutas();
+		$data['futasok'] = $this->Gkfutas_model->getAllGkfutas();
 		$partialviews = [
 			'header' => $this->load->view('partials/header_view','', TRUE),
 			'menu' => $this->load->view('partials/menu_view', '', TRUE),
