@@ -3,6 +3,7 @@
     <div class="adminform-body">
         <?php echo(anchor('gkfutas/create','Új hozzárendelés','class="itemcreate-button"')); ?>
         <br />
+        <?php print_r($futasok); ?>
         <table class="listview-table">
             <tr>
                 <th class="listview-rowheader">Dátum</th>
