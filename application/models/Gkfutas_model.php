@@ -28,8 +28,8 @@ class Gkfutas_model extends CI_Model {
         $this->db->join('w_feladat_kiad fk', 'gf.gk_futas_id = fk.gk_futas_id', 'left');
         $this->db->join('k_feladat f', 'fk.feladat_id = f.feladat_id', 'left');
         $this->db->join('k_gepkocsi k', 'gf.gk_id = k.gk_id', 'inner');
-        //$this->db->distinct();
-        $this->db->group_by('f.feladat_leiras');
+        $this->db->distinct();
+        //$this->db->group_by('gf.gk_futas_id');
         $query = $this->db->get();
         return $query->result_array();
     }
