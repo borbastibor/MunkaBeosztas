@@ -3,7 +3,6 @@
     <div class="adminform-body">
         <?php echo(anchor('gkfutas/create','Új hozzárendelés','class="itemcreate-button"')); ?>
         <br />
-        <?php print_r($futasok); ?>
         <table class="listview-table">
             <tr>
                 <th class="listview-rowheader">Dátum</th>
@@ -18,13 +17,17 @@
                     <td class="listview-cell"><?php echo($futas_item['datum']); ?></td>
                     <td class="listview-cell"><?php echo($futas_item['gepkocsi']); ?></td>
                     <td class="listview-cell"><?php
-                        foreach ($futas_item['dolgozo_nev'] as $dnev) {
-                            echo($dnev.'\n');
+                        foreach ($futasok as $futas_inneritem) {
+                            if ($futas_inneritem['gk_futas_id'] == $futas_item['gk_futas_id']) {
+                                echo($futas_inneritem['dolgozo_nev'].'<br />');
+                            }
                         }
                     ?></td>
                     <td class="listview-cell"><?php
-                        foreach ($futas_item['feladat_leiras'] as $fleiras) {
-                            echo($fleiras.'\n');
+                        foreach ($futasok as $futas_inneritem) {
+                            if ($futas_inneritem['gk_futas_id'] == $futas_item['gk_futas_id']) {
+                                echo($futas_inneritem['feladat_leiras'].'<br />');
+                            }
                         }
                     ?></td>
                     <td class="listview-cell"><?php
