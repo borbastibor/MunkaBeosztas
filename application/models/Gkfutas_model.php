@@ -52,12 +52,78 @@ class Gkfutas_model extends CI_Model {
     }
 
     public function getGkfutasById($id) {
-        //$query = $this->db->get_where('k_dolgozo',array('dolgozo_id' => $id));
-        //return $query->row();
+        $this->db->select('gf.gk_futas_id,gf.datum,k.gepkocsi');
+        $this->db->from('w_gepkocsi_futas gf');
+        $this->db->join('k_gepkocsi k', 'gf.gk_id = k.gk_id', 'inner');
+        $this->db->where('gf.gk_futas_id', $id);
+        $query = $this->db->get();
+        $result = $query->result_array();
+
+        $this->db->select('d.dolgozo_nev');
+        $this->db->from('w_gepkocsi_futas gf');
+        $this->db->join('w_dolgozo_kikuld dk', 'gf.gk_futas_id = dk.gk_futas_id', 'left');
+        $this->db->join('k_dolgozo d', 'dk.dolgozo_id = d.dolgozo_id', 'left');
+        $this->db->where('gf.gk_futas_id', $id);
+        $query = $this->db->get();
+        $result['dolgozok'] = $query->result_array();
+
+        $this->db->select('fk.utemezheto, f.feladat_leiras');
+        $this->db->from('w_gepkocsi_futas gf');
+        $this->db->join('w_feladat_kiad fk', 'gf.gk_futas_id = fk.gk_futas_id', 'left');
+        $this->db->join('k_feladat f', 'fk.feladat_id = f.feladat_id', 'left');
+        $this->db->where('gf.gk_futas_id', $id);
+        $query = $this->db->get();
+        $result['feladatok'] = $query->result_array();
+
+        return $result;
     }
 
     public function getGkfutasByTimePeriod($sdate) {
-        
+        $startdate = new DateTime($sdate);
+        $period_dates = array(
+            '1' => $sdate,
+	        '2' => DateTime::add($startdate, new DateInterval('P1D'))->format('Y-m-d'),
+	        '3' => DateTime::add($startdate, new DateInterval('P2D'))->format('Y-m-d'),
+	        '4' => DateTime::add($startdate, new DateInterval('P3D'))->format('Y-m-d'),
+	        '5' => DateTime::add($startdate, new DateInterval('P4D'))->format('Y-m-d'),
+	        '6' => DateTime::add($startdate, new DateInterval('P5D'))->format('Y-m-d'),
+	        '7' => DateTime::add($startdate, new DateInterval('P6D'))->format('Y-m-d')
+        );
+
+        $this->db->select('gf.gk_futas_id,gf.datum,k.gepkocsi');
+        $this->db->from('w_gepkocsi_futas gf');
+        $this->db->join('k_gepkocsi k', 'gf.gk_id = k.gk_id', 'inner');
+        $this->db->where('gf.datum', $period_dates['1']);
+        $this->db->or_where('gf.datum', $period_dates['2']);
+        $this->db->or_where('gf.datum', $period_dates['3']);
+        $this->db->or_where('gf.datum', $period_dates['4']);
+        $this->db->or_where('gf.datum', $period_dates['5']);
+        $this->db->or_where('gf.datum', $period_dates['6']);
+        $this->db->or_where('gf.datum', $period_dates['7']);
+        $query = $this->db->get();
+        $result = $query->result_array();
+
+        foreach ($result as &$result_item) {
+            $this->db->select('d.dolgozo_nev');
+            $this->db->from('w_gepkocsi_futas gf');
+            $this->db->join('w_dolgozo_kikuld dk', 'gf.gk_futas_id = dk.gk_futas_id', 'left');
+            $this->db->join('k_dolgozo d', 'dk.dolgozo_id = d.dolgozo_id', 'left');
+            $this->db->where('gf.gk_futas_id', $result_item['gk_futas_id']);
+            $query = $this->db->get();
+            $result_item['dolgozok'] = $query->result_array();
+        }
+
+        foreach ($result as &$result_item) {
+            $this->db->select('fk.utemezheto, f.feladat_leiras');
+            $this->db->from('w_gepkocsi_futas gf');
+            $this->db->join('w_feladat_kiad fk', 'gf.gk_futas_id = fk.gk_futas_id', 'left');
+            $this->db->join('k_feladat f', 'fk.feladat_id = f.feladat_id', 'left');
+            $this->db->where('gf.gk_futas_id', $result_item['gk_futas_id']);
+            $query = $this->db->get();
+            $result_item['feladatok'] = $query->result_array();
+        }
+
+        return $result;
     }
 
 }
