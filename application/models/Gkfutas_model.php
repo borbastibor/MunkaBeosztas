@@ -21,17 +21,34 @@ class Gkfutas_model extends CI_Model {
     }
 
     public function getAllGkfutas() {
-        $this->db->select('gf.gk_futas_id, gf.datum, k.gepkocsi, d.dolgozo_nev, fk.utemezheto, f.feladat_leiras');
+        $this->db->select('gf.gk_futas_id,gf.datum,k.gepkocsi');
         $this->db->from('w_gepkocsi_futas gf');
-        $this->db->join('w_dolgozo_kikuld dk', 'gf.gk_futas_id = dk.gk_futas_id', 'left');
-        $this->db->join('k_dolgozo d', 'dk.dolgozo_id = d.dolgozo_id', 'left');
-        $this->db->join('w_feladat_kiad fk', 'gf.gk_futas_id = fk.gk_futas_id', 'left');
-        $this->db->join('k_feladat f', 'fk.feladat_id = f.feladat_id', 'left');
         $this->db->join('k_gepkocsi k', 'gf.gk_id = k.gk_id', 'inner');
-        $this->db->distinct();
-        //$this->db->group_by('gf.gk_futas_id');
+        $this->db->order_by('gf.datum');
         $query = $this->db->get();
-        return $query->result_array();
+        $result = $query->result_array();
+
+        foreach ($result as &$result_item) {
+            $this->db->select('d.dolgozo_nev');
+            $this->db->from('w_gepkocsi_futas gf');
+            $this->db->join('w_dolgozo_kikuld dk', 'gf.gk_futas_id = dk.gk_futas_id', 'left');
+            $this->db->join('k_dolgozo d', 'dk.dolgozo_id = d.dolgozo_id', 'left');
+            $this->db->where('gf.gk_futas_id', $result_item['gk_futas_id']);
+            $query = $this->db->get();
+            $result_item['dolgozok'] = $query->result_array();
+        }
+
+        foreach ($result as &$result_item) {
+            $this->db->select('fk.utemezheto, f.feladat_leiras');
+            $this->db->from('w_gepkocsi_futas gf');
+            $this->db->join('w_feladat_kiad fk', 'gf.gk_futas_id = fk.gk_futas_id', 'left');
+            $this->db->join('k_feladat f', 'fk.feladat_id = f.feladat_id', 'left');
+            $this->db->where('gf.gk_futas_id', $result_item['gk_futas_id']);
+            $query = $this->db->get();
+            $result_item['feladatok'] = $query->result_array();
+        }
+
+        return $result;
     }
 
     public function getGkfutasById($id) {

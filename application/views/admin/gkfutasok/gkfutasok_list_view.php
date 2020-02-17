@@ -17,17 +17,13 @@
                     <td class="listview-cell"><?php echo($futas_item['datum']); ?></td>
                     <td class="listview-cell"><?php echo($futas_item['gepkocsi']); ?></td>
                     <td class="listview-cell"><?php
-                        foreach ($futasok as $futas_inneritem) {
-                            if ($futas_inneritem['gk_futas_id'] == $futas_item['gk_futas_id']) {
-                                echo($futas_inneritem['dolgozo_nev'].'<br />');
-                            }
+                        foreach ($futas_item['dolgozok'] as $dolgozo) {
+                            echo($dolgozo['dolgozo_nev'].'<br />');
                         }
                     ?></td>
                     <td class="listview-cell"><?php
-                        foreach ($futasok as $futas_inneritem) {
-                            if ($futas_inneritem['gk_futas_id'] == $futas_item['gk_futas_id']) {
-                                echo($futas_inneritem['feladat_leiras'].'<br />');
-                            }
+                        foreach ($futas_item['feladatok'] as $feladat) {
+                            echo($feladat['feladat_leiras'].'<br />');
                         }
                     ?></td>
                     <td class="listview-cell"><?php
