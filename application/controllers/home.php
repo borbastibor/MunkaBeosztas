@@ -7,6 +7,7 @@ class Home extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->library('session');
+		$this->load->helper('url');
 		$this->load->model('Gkfutas_model');
 	}
 
@@ -28,28 +29,28 @@ class Home extends CI_Controller {
 	// Nézet eltolása egy nappal vissza
 	public function shiftOneDayBack() {
 		$sdate = new DateTime($this->session->userdata('startdate'));
-		$this->session->set_userdata('startdate', DateTime::sub($sdate, new DateInterval('P1D'))->format('Y-m-d'));
+		$this->session->set_userdata('startdate', date_sub($sdate, new DateInterval('P1D'))->format('Y-m-d'));
 		redirect('home/index');
 	}
 
 	// Nézet eltolása egy nappal előre
 	public function shiftOneDayFwd() {
 		$sdate = new DateTime($this->session->userdata('startdate'));
-		$this->session->set_userdata('startdate', DateTime::add($sdate, new DateInterval('P1D'))->format('Y-m-d'));
+		$this->session->set_userdata('startdate', date_add($sdate, new DateInterval('P1D'))->format('Y-m-d'));
 		redirect('home/index');
 	}
 
 	// Nézet eltolása egy héttel vissza
 	public function shiftOneWeekBack() {
 		$sdate = new DateTime($this->session->userdata('startdate'));
-		$this->session->set_userdata('startdate', DateTime::sub($sdate, new DateInterval('P7D'))->format('Y-m-d'));
+		$this->session->set_userdata('startdate', date_sub($sdate, new DateInterval('P7D'))->format('Y-m-d'));
 		redirect('home/index');
 	}
 
 	// Nézet eltolása egy héttel előre
 	public function shiftOneWeekFwd() {
 		$sdate = new DateTime($this->session->userdata('startdate'));
-		$this->session->set_userdata('startdate', DateTime::add($sdate, new DateInterval('P7D'))->format('Y-m-d'));
+		$this->session->set_userdata('startdate', date_add($sdate, new DateInterval('P7D'))->format('Y-m-d'));
 		redirect('home/index');
 	}
 
