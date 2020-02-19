@@ -13,7 +13,7 @@ class Home extends CI_Controller {
 
 	// Naptár nézet betöltése
 	public function index() {
-		if (!$this->session->has_userdata('startdate')) {
+		if ($this->session->userdata('startdate') == null) {
 			$this->session->set_userdata('startdate', date('Y-m-d'));
 		}
 		$data['futasok'] = $this->Gkfutas_model->getGkfutasByTimePeriod($this->session->userdata('startdate'));
