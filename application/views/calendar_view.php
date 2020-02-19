@@ -34,11 +34,10 @@
     </tr>
     <tr>
     <?php
-        print_r($futasok);
         foreach ($period_dates as $pdate) {
             $stylestring ='';
             if ($pdate == date('Y-m-d')) {
-                $stylestring = 'background-color: rgba(255, 0, 0, 0.4); ';
+                $stylestring = 'background-color: rgba(255, 150, 0, 0.4); ';
             }
             echo('<td class="calendar-cell" style="'.$stylestring.'">');
             foreach ($futasok as $futas_item) {
