@@ -17,6 +17,7 @@ class Home extends CI_Controller {
 			$this->session->set_userdata('startdate', date('Y-m-d'));
 		}
 		$data['futasok'] = $this->Gkfutas_model->getGkfutasByTimePeriod($this->session->userdata('startdate'));
+		$data['sdate'] = $this->session->userdata('startdate');
 		$partialviews = [
 			'header' => $this->load->view('partials/header_view','', true),
 			'menu' => $this->load->view('partials/menu_view','', true),

@@ -1,7 +1,6 @@
 <table class="calendar-container">
     <tr>
     <?php
-        $sdate = $this->session->userdata('startdate');
         $weekdays = array(
             1 => 'Hétfő',
             2 => 'Kedd',
@@ -22,9 +21,6 @@
         );
         foreach ($period_dates as $date) {
             $stylestring = '';
-            if ($date == date('Y-m-d')) {
-                $stylestring = $stylestring.'border-color: red; ';
-            }
             $daynum = (new DateTime($date))->format('N');
             if ($daynum == 6) {
                 $stylestring = $stylestring.'background-color: green; ';
@@ -38,10 +34,11 @@
     </tr>
     <tr>
     <?php
+        print_r($futasok);
         foreach ($period_dates as $pdate) {
             $stylestring ='';
             if ($pdate == date('Y-m-d')) {
-                $stylestring = 'border-color: red; ';
+                $stylestring = 'background-color: rgba(255, 0, 0, 0.4); ';
             }
             echo('<td class="calendar-cell" style="'.$stylestring.'">');
             foreach ($futasok as $futas_item) {
@@ -55,7 +52,7 @@
                         echo($dolgozo['dolgozo_nev'].'<br />');
                     }
                     foreach ($futas_item['feladatok'] as $feladat) {
-                        echo($feladat['feladat_leiras'].'; ');
+                        echo($feladat['feladat_leiras'].';<br />');
                     }
                     echo('</div>');
                     echo('</div>');

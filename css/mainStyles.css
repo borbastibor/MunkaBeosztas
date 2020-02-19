@@ -16,6 +16,8 @@ body {
     border: none;
     box-shadow: 5px 10px 8px rgb(75,75,75);
     position: relative;
+    resize: both;
+    overflow: auto;
 }
 
 .adminform-title {
