@@ -79,17 +79,17 @@ class Gkfutas_model extends CI_Model {
     }
 
     public function getGkfutasByTimePeriod($sdate) {
-        $startdate = new DateTime($sdate);
+        // $startdate = new DateTime($sdate);
 	// A date_add() függvényben a $startdate-hez adódik hozzá az időintervallum
 	// ezért újonnan kell létrehozni mindig a startdate-t???
         $period_dates = array(
             	'1' => $sdate,
-	        '2' => date_add($startdate, new DateInterval('P1D'))->format('Y-m-d'),
-	        '3' => date_add($startdate, new DateInterval('P2D'))->format('Y-m-d'),
-	        '4' => date_add($startdate, new DateInterval('P3D'))->format('Y-m-d'),
-	        '5' => date_add($startdate, new DateInterval('P4D'))->format('Y-m-d'),
-	        '6' => date_add($startdate, new DateInterval('P5D'))->format('Y-m-d'),
-	        '7' => date_add($startdate, new DateInterval('P6D'))->format('Y-m-d')
+	        '2' => date_add(new DateTime($sdate), new DateInterval('P1D'))->format('Y-m-d'),
+	        '3' => date_add(new DateTime($sdate), new DateInterval('P2D'))->format('Y-m-d'),
+	        '4' => date_add(new DateTime($sdate), new DateInterval('P3D'))->format('Y-m-d'),
+	        '5' => date_add(new DateTime($sdate), new DateInterval('P4D'))->format('Y-m-d'),
+	        '6' => date_add(new DateTime($sdate), new DateInterval('P5D'))->format('Y-m-d'),
+	        '7' => date_add(new DateTime($sdate), new DateInterval('P6D'))->format('Y-m-d')
         );
 
         $this->db->select('gf.gk_futas_id,gf.datum,k.gepkocsi');
