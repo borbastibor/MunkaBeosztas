@@ -1,31 +1,46 @@
-.popup-button {
+/* Dropdown Button */
+.dropbtn {
     background-color: rgb(50,50,50);
     color: white;
-    padding: 5px;
-    font-size: 28px;
+    padding: 8px;
+    font-size: 16px;
     font-weight: bold;
-    text-decoration: none;
     border: none;
-    cursor: pointer;
+    z-index: 1;
     opacity: 0.25;
-    filter: alpha(opacity=25);
-}
-
-.popup-button:hover {
-    opacity: 1;
-}
-
-.popup-container {
-    position: fixed;
-    background-color: white;
-    border: 1px solid black;
-    visibility: hidden;
-}
-
-.popup-container:target {
-    visibility: visible;
-    opacity: 1;
-}
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(50,50,50);
+    min-width: 160px;
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: rgb(100,100,100);}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .dropbtn {opacity: 1;}
 
 /* Új elem hozzáadása a listához gomb */
 .itemcreate-button:link, .itemcreate-button:visited {
