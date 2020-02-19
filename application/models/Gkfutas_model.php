@@ -80,8 +80,10 @@ class Gkfutas_model extends CI_Model {
 
     public function getGkfutasByTimePeriod($sdate) {
         $startdate = new DateTime($sdate);
+	// A date_add() függvényben a $startdate-hez adódik hozzá az időintervallum
+	// ezért újonnan kell létrehozni mindig a startdate-t???
         $period_dates = array(
-            '1' => $sdate,
+            	'1' => $sdate,
 	        '2' => date_add($startdate, new DateInterval('P1D'))->format('Y-m-d'),
 	        '3' => date_add($startdate, new DateInterval('P2D'))->format('Y-m-d'),
 	        '4' => date_add($startdate, new DateInterval('P3D'))->format('Y-m-d'),
