@@ -1,5 +1,6 @@
 <div class="adminform-container">
     <div class="adminform-title">Feladat hozzárendelések</div>
+    <?php echo(anchor('home/index','[X]',array('class' => 'cancel-button'))); ?>
     <div class="adminform-body">
         <?php echo(anchor('gkfutas/create','Új hozzárendelés','class="itemcreate-button"')); ?>
         <br />

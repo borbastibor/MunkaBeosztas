@@ -4,7 +4,8 @@ body {
     width: 100%;
     font-family: 'Lucida Sans Unicode';
     font-size: 12px;
-    background-color: rgb(150,150,150);
+    background-color: white;
+    /*background-color: rgb(150,150,150);*/
 }
 
 /* A szerkesztés, törlés és létrehozás lapok stílusai */

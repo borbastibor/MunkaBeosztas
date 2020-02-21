@@ -62,3 +62,12 @@
     ?>
     </tr>
 </table>
+<div class="calendar-control-container">
+    <?php
+        echo(anchor('home/shiftOneDayBack', '<', array('class' => 'calendar-control-btn')));
+        echo(anchor('home/shiftOneWeekBack', '&#8810', array('class' => 'calendar-control-btn')));
+        echo(anchor('home/resetToCurrentDay', 'C', array('class' => 'calendar-control-btn')));
+        echo(anchor('home/shiftOneWeekFwd', '&#8811', array('class' => 'calendar-control-btn')));
+        echo(anchor('home/shiftOneDayFwd', '>', array('class' => 'calendar-control-btn')));
+    ?>
+</div>
