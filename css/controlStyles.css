@@ -1,3 +1,13 @@
+/* Dropbutton container */
+.dropbtn-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+
 /* Dropdown Button */
 .dropbtn {
   background-color: rgb(50,50,50);
