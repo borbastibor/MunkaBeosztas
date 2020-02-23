@@ -26,10 +26,12 @@ class Munkak extends CI_Controller {
 	public function create() {
         if ($this->form_validation->run('munkak_rules') == FALSE)
     	{
+			$menudata['iscalendarview'] = FALSE;
+			$menudata['isadmin'] = $this->session->userdata('isAdmin');
 			$data['errors'] = validation_errors();
 			$partialviews = [
 				'header' => $this->load->view('partials/header_view', '', TRUE),
-				'menu' => $this->load->view('partials/menu_view', '', TRUE),
+				'menu' => $this->load->view('partials/menu_view', $menudata, TRUE),
 				'content' => $this->load->view('admin/munkak/munkak_create_view', $data, TRUE),
 				'footer' => $this->load->view('partials/footer_view', '', TRUE)
 			];
@@ -45,11 +47,13 @@ class Munkak extends CI_Controller {
 		if ($id == null) {
 			redirect('munkak/index');
 		}
+		$menudata['iscalendarview'] = FALSE;
+		$menudata['isadmin'] = $this->session->userdata('isAdmin');
 		$data['munka'] = $this->Munkak_model->getMunkaById($id);
 		$data['errors'] = null;
 		$partialviews = [
 			'header' => $this->load->view('partials/header_view','', TRUE),
-			'menu' => $this->load->view('partials/menu_view', '', TRUE),
+			'menu' => $this->load->view('partials/menu_view', $menudata, TRUE),
 			'content' => $this->load->view('admin/munkak/munkak_edit_view', $data, TRUE),
 			'footer' => $this->load->view('partials/footer_view', '', TRUE)
 		];
@@ -60,11 +64,13 @@ class Munkak extends CI_Controller {
 	public function edit_save() {
 		if ($this->form_validation->run('kocsik_rules') == FALSE)
     	{
+			$menudata['iscalendarview'] = FALSE;
+			$menudata['isadmin'] = $this->session->userdata('isAdmin');
 			$data['munka'] = $this->Kocsik_model->getMunkaById($this->input->post('id'));
 			$data['errors'] = validation_errors();
 			$partialviews = [
 				'header' => $this->load->view('partials/header_view','', TRUE),
-				'menu' => $this->load->view('partials/menu_view', '', TRUE),
+				'menu' => $this->load->view('partials/menu_view', $menudata, TRUE),
 				'content' => $this->load->view('admin/munkak/munkak_edit_view', $data, TRUE),
 				'footer' => $this->load->view('partials/footer_view', '', TRUE)
 			];
@@ -81,10 +87,12 @@ class Munkak extends CI_Controller {
 		if ($id == null) {
 			redirect('munkak/index');
 		}
+		$menudata['iscalendarview'] = FALSE;
+		$menudata['isadmin'] = $this->session->userdata('isAdmin');
 		$data['munka'] = $this->Munkak_model->getMunkaById($id);
 		$partialviews = [
 			'header' => $this->load->view('partials/header_view', '', TRUE),
-			'menu' => $this->load->view('partials/menu_view', '', TRUE),
+			'menu' => $this->load->view('partials/menu_view', $menudata, TRUE),
 			'content' => $this->load->view('admin/munkak/munkak_delete_view', $data, TRUE),
 			'footer' => $this->load->view('partials/footer_view', '', TRUE)
 		];

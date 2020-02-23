@@ -26,10 +26,12 @@ class Kocsik extends CI_Controller {
 	public function create() {
         if ($this->form_validation->run('kocsik_rules') == FALSE)
     	{
+			$menudata['iscalendarview'] = FALSE;
+			$menudata['isadmin'] = $this->session->userdata('isAdmin');
 			$data['errors'] = validation_errors();
 			$partialviews = [
 				'header' => $this->load->view('partials/header_view', '', TRUE),
-				'menu' => $this->load->view('partials/menu_view', '', TRUE),
+				'menu' => $this->load->view('partials/menu_view', $menudata, TRUE),
 				'content' => $this->load->view('admin/kocsik/kocsik_create_view', $data, TRUE),
 				'footer' => $this->load->view('partials/footer_view', '', TRUE)
 			];
@@ -45,11 +47,13 @@ class Kocsik extends CI_Controller {
 		if ($id == null) {
 			redirect('kocsik/index');
 		}
+		$menudata['iscalendarview'] = FALSE;
+		$menudata['isadmin'] = $this->session->userdata('isAdmin');
 		$data['car'] = $this->Kocsik_model->getKocsiById($id);
 		$data['errors'] = null;
 		$partialviews = [
 			'header' => $this->load->view('partials/header_view','', TRUE),
-			'menu' => $this->load->view('partials/menu_view', '', TRUE),
+			'menu' => $this->load->view('partials/menu_view', $menudata, TRUE),
 			'content' => $this->load->view('admin/kocsik/kocsik_edit_view', $data, TRUE),
 			'footer' => $this->load->view('partials/footer_view', '', TRUE)
 		];
@@ -60,11 +64,13 @@ class Kocsik extends CI_Controller {
 	public function edit_save() {
 		if ($this->form_validation->run('kocsik_rules') == FALSE)
     	{
+			$menudata['iscalendarview'] = FALSE;
+			$menudata['isadmin'] = $this->session->userdata('isAdmin');
 			$data['car'] = $this->Kocsik_model->getKocsiById($this->input->post('id'));
 			$data['errors'] = validation_errors();
 			$partialviews = [
 				'header' => $this->load->view('partials/header_view','', TRUE),
-				'menu' => $this->load->view('partials/menu_view', '', TRUE),
+				'menu' => $this->load->view('partials/menu_view', $menudata, TRUE),
 				'content' => $this->load->view('admin/kocsik/kocsik_edit_view', $data, TRUE),
 				'footer' => $this->load->view('partials/footer_view', '', TRUE)
 			];
@@ -81,10 +87,12 @@ class Kocsik extends CI_Controller {
 		if ($id == null) {
 			redirect('kocsik/index');
 		}
+		$menudata['iscalendarview'] = FALSE;
+		$menudata['isadmin'] = $this->session->userdata('isAdmin');
 		$data['car'] = $this->Kocsik_model->getKocsiById($id);
 		$partialviews = [
 			'header' => $this->load->view('partials/header_view', '', TRUE),
-			'menu' => $this->load->view('partials/menu_view', '', TRUE),
+			'menu' => $this->load->view('partials/menu_view', $menudata, TRUE),
 			'content' => $this->load->view('admin/kocsik/kocsik_delete_view', $data, TRUE),
 			'footer' => $this->load->view('partials/footer_view', '', TRUE)
 		];
