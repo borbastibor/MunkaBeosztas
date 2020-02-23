@@ -6,17 +6,16 @@ class Dolgozok extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->model('Dolgozok_model');
-		$this->load->helper(array('form', 'url'));
-		$this->load->library('form_validation');
 	}
 
 	// Dolgozóklista nézet betöltése
 	public function index() {
+		$menudata['iscalendarview'] = FALSE;
+		$menudata['isadmin'] = $this->session->userdata('isAdmin');
 		$data['dolgozok'] = $this->Dolgozok_model->getAllDolgozok();
 		$partialviews = [
 			'header' => $this->load->view('partials/header_view','', TRUE),
-			'menu' => $this->load->view('partials/menu_view', '', TRUE),
+			'menu' => $this->load->view('partials/menu_view', $menudata, TRUE),
 			'content' => $this->load->view('admin/dolgozok/dolgozok_list_view', $data, TRUE),
 			'footer' => $this->load->view('partials/footer_view', '', TRUE)
 		];

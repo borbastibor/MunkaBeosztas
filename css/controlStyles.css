@@ -1,10 +1,12 @@
+
 /* Dropbutton container */
 .dropbtn-container {
   width: 100%;
   margin: 0;
   padding: 0;
   position: fixed;
-  top: 0;
+  bottom: 0;
+  text-align: right;
   z-index: 1;
 }
 
@@ -12,8 +14,9 @@
 .dropbtn {
   background-color: rgb(50,50,50);
   color: white;
-  padding: 8px;
-  font-size: 16px;
+  margin: 5px;
+  padding: 6px 8px;
+  font-size: 18px;
   font-weight: bold;
   border: none;
   z-index: 1;
@@ -22,14 +25,19 @@
   
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
-  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  bottom: 0;
+  text-align: right;
+  z-index: 1;
   display: inline-block;
 }
   
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   display: none;
-  position: absolute;
   background-color: rgb(50,50,50);
   min-width: 160px;
   z-index: 1;
@@ -39,8 +47,9 @@
 .dropdown-content a {
   color: white;
   padding: 12px 16px;
+  font-size: 16px;
   text-decoration: none;
-  display: block;
+  display: inline;
 }
   
 /* Change color of dropdown links on hover */
@@ -53,7 +62,7 @@
 .dropdown:hover .dropbtn {opacity: 1;}
 
 /* Naptár vezérlő stílusok */
-.calendar-control-container {
+.menu-control-container {
   width: 100%;
   margin: 0;
   padding: 0;
