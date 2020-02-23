@@ -20,6 +20,7 @@ class Gkfutas_model extends CI_Model {
         //return $this->db->delete('k_dolgozo');
     }
 
+    // Összes gkfutas rekord lekérése
     public function getAllGkfutas() {
         $this->db->select('gf.gk_futas_id,gf.datum,k.gepkocsi');
         $this->db->from('w_gepkocsi_futas gf');
@@ -51,6 +52,7 @@ class Gkfutas_model extends CI_Model {
         return $result;
     }
 
+    // Gkfutas rekord lekérése id alapján
     public function getGkfutasById($id) {
         $this->db->select('gf.gk_futas_id,gf.datum,k.gepkocsi');
         $this->db->from('w_gepkocsi_futas gf');
@@ -78,6 +80,7 @@ class Gkfutas_model extends CI_Model {
         return $result;
     }
 
+    // Függvény a gkfutas adatok lekérése egy adott kezdődátum + 6 napra
     public function getGkfutasByTimePeriod($sdate) {
         $period_dates = array(
             '1' => $sdate,

@@ -6,7 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Munkabeosztást megjelenítő weboldal">
         <meta name="author" content="Borbás Tibor">
-        <meta http-equiv="refresh" content="10">
+        <?php
+            if ($iscalendarview) {
+                echo('<meta http-equiv="refresh" content="15">');
+            }
+        ?>
         <link rel="stylesheet" type="text/css" href=<?php echo(base_url('css/mainStyles.css')); ?>>
         <link rel="stylesheet" type="text/css" href=<?php echo(base_url('css/tagStyles.css')); ?>>
         <link rel="stylesheet" type="text/css" href=<?php echo(base_url('css/tableStyles.css')); ?>>

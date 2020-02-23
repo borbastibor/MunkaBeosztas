@@ -13,12 +13,13 @@ class Home extends CI_Controller {
 		if ($this->session->userdata('startdate') == null) {
 			$this->session->set_userdata('startdate', date('Y-m-d'));
 		}
+		$headerdata['iscalendarview'] = TRUE;
 		$menudata['iscalendarview'] = TRUE;
 		$menudata['isadmin'] = $this->session->userdata('isAdmin');
 		$data['futasok'] = $this->Gkfutas_model->getGkfutasByTimePeriod($this->session->userdata('startdate'));
 		$data['sdate'] = $this->session->userdata('startdate');
 		$partialviews = [
-			'header' => $this->load->view('partials/header_view', '', TRUE),
+			'header' => $this->load->view('partials/header_view', $headerdata, TRUE),
 			'menu' => $this->load->view('partials/menu_view', $menudata, TRUE),
 			'content' => $this->load->view('calendar_view', $data, TRUE),
 			'footer' => $this->load->view('partials/footer_view', '', TRUE)

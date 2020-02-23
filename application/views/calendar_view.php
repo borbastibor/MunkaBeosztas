@@ -51,7 +51,11 @@
                         echo($dolgozo['dolgozo_nev'].'<br />');
                     }
                     foreach ($futas_item['feladatok'] as $feladat) {
-                        echo($feladat['feladat_leiras'].';<br />');
+                        if ($feladat['utemezheto'] == 0) {
+                            echo('<span style="color: red">'.$feladat['feladat_leiras'].';</span><br />');
+                        } else {
+                            echo('<span>'.$feladat['feladat_leiras'].';</span><br />');
+                        }
                     }
                     echo('</div>');
                     echo('</div>');
