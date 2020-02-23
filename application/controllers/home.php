@@ -6,7 +6,6 @@ class Home extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->session->set_userdata('isAdmin', TRUE);
 	}
 
 	// Naptár nézet betöltése

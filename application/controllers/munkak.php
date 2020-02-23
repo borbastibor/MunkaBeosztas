@@ -62,11 +62,11 @@ class Munkak extends CI_Controller {
 
 	// Kiválasztott munka mentése szerkesztés után
 	public function edit_save() {
-		if ($this->form_validation->run('kocsik_rules') == FALSE)
+		if ($this->form_validation->run('munkak_rules') == FALSE)
     	{
 			$menudata['iscalendarview'] = FALSE;
 			$menudata['isadmin'] = $this->session->userdata('isAdmin');
-			$data['munka'] = $this->Kocsik_model->getMunkaById($this->input->post('id'));
+			$data['munka'] = $this->Munkak_model->getMunkaById($this->input->post('id'));
 			$data['errors'] = validation_errors();
 			$partialviews = [
 				'header' => $this->load->view('partials/header_view','', TRUE),
@@ -76,7 +76,7 @@ class Munkak extends CI_Controller {
 			];
         	$this->load->view('public_template_view', $partialviews);
     	} else {
-        	$data = array ('feladat' => $this->input->post('feladat'));
+        	$data = array ('feladat_leiras' => $this->input->post('feladat'));
 			$this->Munkak_model->update_entry($this->input->post('id'), $data);
         	redirect('munkak/index');
     	}
