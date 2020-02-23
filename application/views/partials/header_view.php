@@ -8,7 +8,7 @@
         <meta name="author" content="Borbás Tibor">
         <?php
             if ($iscalendarview) {
-                echo('<meta http-equiv="refresh" content="15">');
+                echo('<meta http-equiv="refresh" content="'.$refreshinterval.'">');
             }
         ?>
         <link rel="stylesheet" type="text/css" href=<?php echo(base_url('css/mainStyles.css')); ?>>

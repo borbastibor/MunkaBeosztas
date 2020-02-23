@@ -4,8 +4,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Home extends CI_Controller {
 
+	var $refresh_interval;
+
 	public function __construct() {
 		parent::__construct();
+		$this->refresh_interval = 15;
 	}
 
 	// Naptár nézet betöltése
@@ -14,6 +17,7 @@ class Home extends CI_Controller {
 			$this->session->set_userdata('startdate', date('Y-m-d'));
 		}
 		$headerdata['iscalendarview'] = TRUE;
+		$headerdata['refreshinterval'] = $this->refresh_interval;
 		$menudata['iscalendarview'] = TRUE;
 		$menudata['isadmin'] = $this->session->userdata('isAdmin');
 		$data['futasok'] = $this->Gkfutas_model->getGkfutasByTimePeriod($this->session->userdata('startdate'));
