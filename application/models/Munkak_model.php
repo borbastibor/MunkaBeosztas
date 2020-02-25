@@ -20,7 +20,7 @@ class Munkak_model extends CI_Model {
         return $this->db->delete('k_feladat');
     }
 
-    public function getAllmunkak() {
+    public function getAllMunkak() {
         $query = $this->db->get('k_feladat');
         return $query->result_array();
     }

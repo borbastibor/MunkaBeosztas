@@ -25,12 +25,19 @@ class Gkfutas extends CI_Controller {
 
 	// Új gépkocsifutás létrehozása
 	public function create() {
-        if ($this->form_validation->run('gkfutasok_rules') == FALSE)
+		if ($this->form_validation->run('gkfutasok_rules') == FALSE)
     	{
 			$headerdata['iscalendarview'] = FALSE;
 			$menudata['iscalendarview'] = FALSE;
 			$menudata['isadmin'] = $this->session->userdata('isAdmin');
 			$data['errors'] = validation_errors();
+			$cardata = $this->Kocsik_model->getAllKocsik();
+			$data['caroptions'] = array();
+			foreach ($cardata as $cardata_item) {
+				$data['caroptions'] += [$cardata_item['gk_id'] => $cardata_item['gepkocsi']];
+			}
+			$data['dolgozolist'] = $this->Dolgozok_model->getAllDolgozok();
+			$data['feladatlist'] = $this->Munkak_model->getAllMunkak();
 			$partialviews = [
 				'header' => $this->load->view('partials/header_view', $headerdata, TRUE),
 				'menu' => $this->load->view('partials/menu_view', $menudata, TRUE),
@@ -39,8 +46,13 @@ class Gkfutas extends CI_Controller {
 			];
         	$this->load->view('public_template_view', $partialviews);
     	} else {
-			$this->Gkfutas_model->insert_entry($this->input->post('feladat'));
-        	redirect('gkfutas/index');
+			$alldata = array();
+			$alldata['datum'] = $this->input->post('datum');
+			$alldata['gepkocsi'] = $this->input->post('gepkocsi');
+			$alldata['dolgozok'] = $this->input->post('dolgozok');
+			//print_r($alldata);
+			// //$this->Gkfutas_model->insert_entry($alldata);
+        	//redirect('gkfutas/index');
     	}
 	}
 
