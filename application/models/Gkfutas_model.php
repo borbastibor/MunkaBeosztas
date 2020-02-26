@@ -7,7 +7,26 @@ class Gkfutas_model extends CI_Model {
     }
 
     public function insert_entry($alldata) {
-        //return $this->db->insert('k_dolgozo', array('dolgozo_nev' => $dolgozonev));
+        $this->db->insert('w_gepkocsi_futas', array(
+            'datum' => $alldata['datum'],
+            'gk_id' => $alldata['gk_id']
+        ));
+        $newgkfutasid = $this->db->insert_id();
+        foreach ($alldata['dolgozok'] as $dolgozo_item) {
+            $this->db->insert('w_dolgozo_kikuld', array(
+                'gk_futas_id' => $newgkfutasid,
+                'dolgozo_id' => $dolgozo_item
+            ));
+        }
+        foreach ($alldata['feladatok'] as $feladat_item) {
+            $utemezes = in_array($feladat_item, $alldata['utemezesek']) ? '1' : '0';
+            $this->db->insert('w_feladat_kiad', array(
+                'gk_futas_id' => $newgkfutasid,
+                'feladat_id' => $feladat_item,
+                'utemezheto' => $utemezes
+            ));
+        }
+        return;
     }
 
     public function update_entry($id, $alldata) {

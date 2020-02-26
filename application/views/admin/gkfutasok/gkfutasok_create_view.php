@@ -41,15 +41,15 @@
         foreach ($feladatlist as $flist_item) {
             echo('<tr class="checkbox-list-row"><td>');
             echo(form_checkbox(array(
-                'name' => 'feladat',
-                'id' => $flist_item['feladat_id'],
+                'name' => 'feladatok[]',
+                'value' => $flist_item['feladat_id'],
                 'checked' => FALSE
             )));
             echo($flist_item['feladat_leiras']);
             echo('</td><td>');
             echo(form_checkbox(array(
-                'name' => 'utemezes',
-                'id' => $flist_item['feladat_id'],
+                'name' => 'utemezesek[]',
+                'value' => $flist_item['feladat_id'],
                 'checked' => FALSE
             )));
             echo('Ütemezhető');

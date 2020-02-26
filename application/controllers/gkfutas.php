@@ -48,11 +48,12 @@ class Gkfutas extends CI_Controller {
     	} else {
 			$alldata = array();
 			$alldata['datum'] = $this->input->post('datum');
-			$alldata['gepkocsi'] = $this->input->post('gepkocsi');
+			$alldata['gk_id'] = $this->Kocsik_model->getKocsiIdByType($this->input->post('gepkocsi'));
 			$alldata['dolgozok'] = $this->input->post('dolgozok');
-			//print_r($alldata);
-			// //$this->Gkfutas_model->insert_entry($alldata);
-        	//redirect('gkfutas/index');
+			$alldata['feladatok'] = $this->input->post('feladatok');
+			$alldata['utemezesek'] = $this->input->post('utemezesek');
+			$this->Gkfutas_model->insert_entry($alldata);
+        	redirect('gkfutas/index');
     	}
 	}
 
