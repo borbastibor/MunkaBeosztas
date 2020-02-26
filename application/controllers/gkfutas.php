@@ -48,7 +48,7 @@ class Gkfutas extends CI_Controller {
     	} else {
 			$alldata = array();
 			$alldata['datum'] = $this->input->post('datum');
-			$alldata['gk_id'] = $this->Kocsik_model->getKocsiIdByType($this->input->post('gepkocsi'));
+			$alldata['gk_id'] = $this->input->post('gepkocsi');
 			$alldata['dolgozok'] = $this->input->post('dolgozok');
 			$alldata['feladatok'] = $this->input->post('feladatok');
 			$alldata['utemezesek'] = $this->input->post('utemezesek');
