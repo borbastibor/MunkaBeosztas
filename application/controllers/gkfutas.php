@@ -24,13 +24,16 @@ class Gkfutas extends CI_Controller {
 	}
 
 	// Új gépkocsifutás létrehozása
-	public function create() {
+	public function create($datum = NULL) {
 		if ($this->form_validation->run('gkfutasok_rules') == FALSE)
     	{
 			$headerdata['iscalendarview'] = FALSE;
 			$menudata['iscalendarview'] = FALSE;
 			$menudata['isadmin'] = $this->session->userdata('isAdmin');
 			$data['errors'] = validation_errors();
+			if ($datum != NULL) {
+				$data['datum'] = $datum;
+			}
 			$cardata = $this->Kocsik_model->getAllKocsik();
 			$data['caroptions'] = array();
 			foreach ($cardata as $cardata_item) {

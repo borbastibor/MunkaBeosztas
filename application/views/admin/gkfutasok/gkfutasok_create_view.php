@@ -9,12 +9,17 @@
         echo(form_open('gkfutas/create'));
 
         // Dátum választó
+        if (isset($datum)) {
+            $datumvalue = $datum;
+        } else {
+            $datumvalue = set_value('datum');
+        }
         echo(form_label('Dátum', 'datum'));
         echo(form_input(array(
             'name' => 'datum',
             'id' => 'datum',
             'type' => 'date',
-            'value' => set_value('datum')
+            'value' => $datumvalue
         )));
 
         // Gépkocsi választó

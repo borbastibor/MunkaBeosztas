@@ -28,7 +28,7 @@
             if ($daynum == 7) {
                 $stylestring = $stylestring.'background-color: red; ';
             }
-            echo('<th class="calendar-header" style="'.$stylestring.'">'.$date.' ('.$weekdays[$daynum].')</th>');
+            echo('<th class="calendar-header" style="'.$stylestring.'">'.anchor('gkfutas/create/'.$date,$date.' ('.$weekdays[$daynum],array('class' => 'tag-title-link')).')</th>');
         }
     ?>
     </tr>
@@ -44,7 +44,11 @@
                 if ($futas_item['datum'] == $pdate) {
                     echo('<div class="tag-container">');
                     echo('<div class="tag-title-container">');
-                    echo($futas_item['gepkocsi']);
+                    if ($isadmin) {
+                        echo(anchor('gkfutas/edit/'.$futas_item['gk_futas_id'],$futas_item['gepkocsi'],array('class' => 'tag-title-link')));
+                    } else {
+                        echo($futas_item['gepkocsi']);
+                    } 
                     echo('</div>');
                     echo('<div class="tag-body">');
                     foreach ($futas_item['dolgozok'] as $dolgozo) {
