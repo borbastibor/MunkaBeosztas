@@ -6,17 +6,17 @@ class Kocsik extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->model('Kocsik_model');
-		$this->load->helper(array('form', 'url'));
-		$this->load->library('form_validation');
 	}
 
 	// Kocsiklista nézet betöltése
 	public function index() {
+		$headerdata['iscalendarview'] = FALSE;
+		$menudata['iscalendarview'] = FALSE;
+		$menudata['isadmin'] = $this->session->userdata('isAdmin');
 		$data['kocsik'] = $this->Kocsik_model->getAllKocsik();
 		$partialviews = [
-			'header' => $this->load->view('partials/header_view','', TRUE),
-			'menu' => $this->load->view('partials/menu_view', '', TRUE),
+			'header' => $this->load->view('partials/header_view', $headerdata, TRUE),
+			'menu' => $this->load->view('partials/menu_view', $menudata, TRUE),
 			'content' => $this->load->view('admin/kocsik/kocsik_list_view', $data, TRUE),
 			'footer' => $this->load->view('partials/footer_view', '', TRUE)
 		];
@@ -27,10 +27,13 @@ class Kocsik extends CI_Controller {
 	public function create() {
         if ($this->form_validation->run('kocsik_rules') == FALSE)
     	{
+			$headerdata['iscalendarview'] = FALSE;
+			$menudata['iscalendarview'] = FALSE;
+			$menudata['isadmin'] = $this->session->userdata('isAdmin');
 			$data['errors'] = validation_errors();
 			$partialviews = [
-				'header' => $this->load->view('partials/header_view', '', TRUE),
-				'menu' => $this->load->view('partials/menu_view', '', TRUE),
+				'header' => $this->load->view('partials/header_view', $headerdata, TRUE),
+				'menu' => $this->load->view('partials/menu_view', $menudata, TRUE),
 				'content' => $this->load->view('admin/kocsik/kocsik_create_view', $data, TRUE),
 				'footer' => $this->load->view('partials/footer_view', '', TRUE)
 			];
@@ -46,11 +49,14 @@ class Kocsik extends CI_Controller {
 		if ($id == null) {
 			redirect('kocsik/index');
 		}
+		$headerdata['iscalendarview'] = FALSE;
+		$menudata['iscalendarview'] = FALSE;
+		$menudata['isadmin'] = $this->session->userdata('isAdmin');
 		$data['car'] = $this->Kocsik_model->getKocsiById($id);
 		$data['errors'] = null;
 		$partialviews = [
-			'header' => $this->load->view('partials/header_view','', TRUE),
-			'menu' => $this->load->view('partials/menu_view', '', TRUE),
+			'header' => $this->load->view('partials/header_view', $headerdata, TRUE),
+			'menu' => $this->load->view('partials/menu_view', $menudata, TRUE),
 			'content' => $this->load->view('admin/kocsik/kocsik_edit_view', $data, TRUE),
 			'footer' => $this->load->view('partials/footer_view', '', TRUE)
 		];
@@ -61,11 +67,14 @@ class Kocsik extends CI_Controller {
 	public function edit_save() {
 		if ($this->form_validation->run('kocsik_rules') == FALSE)
     	{
+			$headerdata['iscalendarview'] = FALSE;
+			$menudata['iscalendarview'] = FALSE;
+			$menudata['isadmin'] = $this->session->userdata('isAdmin');
 			$data['car'] = $this->Kocsik_model->getKocsiById($this->input->post('id'));
 			$data['errors'] = validation_errors();
 			$partialviews = [
-				'header' => $this->load->view('partials/header_view','', TRUE),
-				'menu' => $this->load->view('partials/menu_view', '', TRUE),
+				'header' => $this->load->view('partials/header_view', $headerdata, TRUE),
+				'menu' => $this->load->view('partials/menu_view', $menudata, TRUE),
 				'content' => $this->load->view('admin/kocsik/kocsik_edit_view', $data, TRUE),
 				'footer' => $this->load->view('partials/footer_view', '', TRUE)
 			];
@@ -82,10 +91,13 @@ class Kocsik extends CI_Controller {
 		if ($id == null) {
 			redirect('kocsik/index');
 		}
+		$headerdata['iscalendarview'] = FALSE;
+		$menudata['iscalendarview'] = FALSE;
+		$menudata['isadmin'] = $this->session->userdata('isAdmin');
 		$data['car'] = $this->Kocsik_model->getKocsiById($id);
 		$partialviews = [
-			'header' => $this->load->view('partials/header_view', '', TRUE),
-			'menu' => $this->load->view('partials/menu_view', '', TRUE),
+			'header' => $this->load->view('partials/header_view', $headerdata, TRUE),
+			'menu' => $this->load->view('partials/menu_view', $menudata, TRUE),
 			'content' => $this->load->view('admin/kocsik/kocsik_delete_view', $data, TRUE),
 			'footer' => $this->load->view('partials/footer_view', '', TRUE)
 		];

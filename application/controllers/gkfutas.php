@@ -6,17 +6,17 @@ class Gkfutas extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->model('Gkfutas_model');
-		$this->load->helper(array('form', 'url'));
-		$this->load->library('form_validation');
 	}
 
 	// Gépkocsifutás listanézet betöltése
 	public function index() {
+		$headerdata['iscalendarview'] = FALSE;
+		$menudata['iscalendarview'] = FALSE;
+		$menudata['isadmin'] = $this->session->userdata('isAdmin');
 		$data['futasok'] = $this->Gkfutas_model->getAllGkfutas();
 		$partialviews = [
-			'header' => $this->load->view('partials/header_view','', TRUE),
-			'menu' => $this->load->view('partials/menu_view', '', TRUE),
+			'header' => $this->load->view('partials/header_view', $headerdata, TRUE),
+			'menu' => $this->load->view('partials/menu_view', $menudata, TRUE),
 			'content' => $this->load->view('admin/gkfutasok/gkfutasok_list_view', $data, TRUE),
 			'footer' => $this->load->view('partials/footer_view', '', TRUE)
 		];
@@ -25,18 +25,34 @@ class Gkfutas extends CI_Controller {
 
 	// Új gépkocsifutás létrehozása
 	public function create() {
-        if ($this->form_validation->run('gkfutasok_rules') == FALSE)
+		if ($this->form_validation->run('gkfutasok_rules') == FALSE)
     	{
+			$headerdata['iscalendarview'] = FALSE;
+			$menudata['iscalendarview'] = FALSE;
+			$menudata['isadmin'] = $this->session->userdata('isAdmin');
 			$data['errors'] = validation_errors();
+			$cardata = $this->Kocsik_model->getAllKocsik();
+			$data['caroptions'] = array();
+			foreach ($cardata as $cardata_item) {
+				$data['caroptions'] += [$cardata_item['gk_id'] => $cardata_item['gepkocsi']];
+			}
+			$data['dolgozolist'] = $this->Dolgozok_model->getAllDolgozok();
+			$data['feladatlist'] = $this->Munkak_model->getAllMunkak();
 			$partialviews = [
-				'header' => $this->load->view('partials/header_view', '', TRUE),
-				'menu' => $this->load->view('partials/menu_view', '', TRUE),
+				'header' => $this->load->view('partials/header_view', $headerdata, TRUE),
+				'menu' => $this->load->view('partials/menu_view', $menudata, TRUE),
 				'content' => $this->load->view('admin/gkfutasok/gkfutasok_create_view', $data, TRUE),
 				'footer' => $this->load->view('partials/footer_view', '', TRUE)
 			];
         	$this->load->view('public_template_view', $partialviews);
     	} else {
-			$this->Gkfutas_model->insert_entry($this->input->post('feladat'));
+			$alldata = array();
+			$alldata['datum'] = $this->input->post('datum');
+			$alldata['gk_id'] = $this->input->post('gepkocsi');
+			$alldata['dolgozok'] = $this->input->post('dolgozok');
+			$alldata['feladatok'] = $this->input->post('feladatok');
+			$alldata['utemezesek'] = $this->input->post('utemezesek');
+			$this->Gkfutas_model->insert_entry($alldata);
         	redirect('gkfutas/index');
     	}
 	}
@@ -46,11 +62,22 @@ class Gkfutas extends CI_Controller {
 		if ($id == null) {
 			redirect('gkfutas/index');
 		}
+		$headerdata['iscalendarview'] = FALSE;
+		$menudata['iscalendarview'] = FALSE;
+		$menudata['isadmin'] = $this->session->userdata('isAdmin');
 		$data['gkfutas'] = $this->Gkfutas_model->getGkfutasById($id);
+		$cardata = $this->Kocsik_model->getAllKocsik();
+		$data['caroptions'] = array();
+		foreach ($cardata as $cardata_item) {
+			$data['caroptions'] += [$cardata_item['gk_id'] => $cardata_item['gepkocsi']];
+		}
+		$data['dolgozolist'] = $this->Dolgozok_model->getAllDolgozok();
+		$data['feladatlist'] = $this->Munkak_model->getAllMunkak();
+		$data['utemezesek'] = $this->Gkfutas_model->getUtemezesekByGkfutasId($id);
 		$data['errors'] = null;
 		$partialviews = [
-			'header' => $this->load->view('partials/header_view','', TRUE),
-			'menu' => $this->load->view('partials/menu_view', '', TRUE),
+			'header' => $this->load->view('partials/header_view', $headerdata, TRUE),
+			'menu' => $this->load->view('partials/menu_view', $menudata, TRUE),
 			'content' => $this->load->view('admin/gkfutasok/gkfutasok_edit_view', $data, TRUE),
 			'footer' => $this->load->view('partials/footer_view', '', TRUE)
 		];
@@ -61,17 +88,32 @@ class Gkfutas extends CI_Controller {
 	public function edit_save() {
 		if ($this->form_validation->run('gkfutasok_rules') == FALSE)
     	{
+			$headerdata['iscalendarview'] = FALSE;
+			$menudata['iscalendarview'] = FALSE;
+			$menudata['isadmin'] = $this->session->userdata('isAdmin');
 			$data['gkfutas'] = $this->Gkfutas_model->getGkfutasById($this->input->post('id'));
+			$cardata = $this->Kocsik_model->getAllKocsik();
+			$data['caroptions'] = array();
+			foreach ($cardata as $cardata_item) {
+				$data['caroptions'] += [$cardata_item['gk_id'] => $cardata_item['gepkocsi']];
+			}
+			$data['dolgozolist'] = $this->Dolgozok_model->getAllDolgozok();
+			$data['feladatlist'] = $this->Munkak_model->getAllMunkak();
+			$data['utemezesek'] = $this->Gkfutas_model->getUtemezesekByGkfutasId($id);
 			$data['errors'] = validation_errors();
 			$partialviews = [
-				'header' => $this->load->view('partials/header_view','', TRUE),
-				'menu' => $this->load->view('partials/menu_view', '', TRUE),
+				'header' => $this->load->view('partials/header_view', $headerdata, TRUE),
+				'menu' => $this->load->view('partials/menu_view', $menudata, TRUE),
 				'content' => $this->load->view('admin/gkfutasok/gkfutasok_edit_view', $data, TRUE),
 				'footer' => $this->load->view('partials/footer_view', '', TRUE)
 			];
         	$this->load->view('public_template_view', $partialviews);
     	} else {
-        	$data = array ('feladat' => $this->input->post('feladat'));
+			$data['datum'] = $this->input->post('datum');
+			$data['gepkocsi'] = $this->input->post('gepkocsi');
+			$data['dolgozok'] = $this->input->post('dolgozok');
+			$data['feladatok'] = $this->input->post('feladatok');
+			$data['utemezesek'] = $this->input->post('utemezesek');
 			$this->Gkfutas_model->update_entry($this->input->post('id'), $data);
         	redirect('gkfutas/index');
     	}
@@ -82,10 +124,13 @@ class Gkfutas extends CI_Controller {
 		if ($id == null) {
 			redirect('gkfutas/index');
 		}
+		$headerdata['iscalendarview'] = FALSE;
+		$menudata['iscalendarview'] = FALSE;
+		$menudata['isadmin'] = $this->session->userdata('isAdmin');
 		$data['gkfutas'] = $this->Gkfutas_model->getGkfutasById($id);
 		$partialviews = [
-			'header' => $this->load->view('partials/header_view', '', TRUE),
-			'menu' => $this->load->view('partials/menu_view', '', TRUE),
+			'header' => $this->load->view('partials/header_view', $headerdata, TRUE),
+			'menu' => $this->load->view('partials/menu_view',$menudata, TRUE),
 			'content' => $this->load->view('admin/gkfutasok/gkfutasok_delete_view', $data, TRUE),
 			'footer' => $this->load->view('partials/footer_view', '', TRUE)
 		];

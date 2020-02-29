@@ -30,5 +30,10 @@ class Kocsik_model extends CI_Model {
         return $query->row();
     }
 
+    public function getKocsiIdByTypeAndLicense($type) {
+        $query = $this->db->get_where('k_gepkocsi',array('gepkocsi' => $type));
+        return $query->row();
+    }
+
 }
 ?>
