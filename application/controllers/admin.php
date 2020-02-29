@@ -1,7 +1,11 @@
 <?php
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+/*
+    Admin osztály
+    Ez az osztály hajtja végre az admin felhasználói
+    felületre belépni akaró felhasználó azonosítását.
+*/
 class Admin extends CI_Controller {
 
     private $valid_passwords;
@@ -9,6 +13,9 @@ class Admin extends CI_Controller {
     private $user;
     private $pass;
 
+    /********************************/
+    /* Admin kontroller konstruktor */
+    /********************************/
 	public function __construct() {
         parent::__construct();
         // Ide jönnek a felhasználónév - jelszó párosok
@@ -29,7 +36,11 @@ class Admin extends CI_Controller {
         }
     }
     
+    /*****************************************/
+    /* Index függvény az admin kontrollerhez */
+    /*****************************************/
     public function index() {
+        // Felhasználónév és jelszó bekérése
         $validated = (in_array($this->user, $this->valid_users)) && ($this->pass == $this->valid_passwords[$this->user]);
         if (!$validated) {
             header('WWW-Authenticate: Basic realm="My Realm"');

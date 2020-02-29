@@ -10,23 +10,29 @@ class Dolgozok extends CI_Controller {
 
 	// Dolgozóklista nézet betöltése
 	public function index() {
+		// A parciális nézetek betöltéséhez szükséges adatok előkészítése
 		$headerdata['iscalendarview'] = FALSE;
 		$menudata['iscalendarview'] = FALSE;
 		$menudata['isadmin'] = $this->session->userdata('isAdmin');
 		$data['dolgozok'] = $this->Dolgozok_model->getAllDolgozok();
+		// Parciális nézetek létrehozása
 		$partialviews = [
 			'header' => $this->load->view('partials/header_view', $headerdata, TRUE),
 			'menu' => $this->load->view('partials/menu_view', $menudata, TRUE),
 			'content' => $this->load->view('admin/dolgozok/dolgozok_list_view', $data, TRUE),
 			'footer' => $this->load->view('partials/footer_view', '', TRUE)
 		];
+		// Parciális nézetek betöltése
 		$this->load->view('public_template_view', $partialviews);
 	}
 
 	// Új dolgozó létrehozása
 	public function create() {
+		// form validáció végrehajtása
         if ($this->form_validation->run('dolgozok_rules') == FALSE)
     	{
+			// Ha hibás adatok vannak a formon, akkor újra megnyitjuk a nézetet
+			// a beírt adatokat megjelenítjük és a hibákat is
 			$headerdata['iscalendarview'] = FALSE;
 			$menudata['iscalendarview'] = FALSE;
 			$menudata['isadmin'] = $this->session->userdata('isAdmin');
@@ -39,6 +45,8 @@ class Dolgozok extends CI_Controller {
 			];
         	$this->load->view('public_template_view', $partialviews);
     	} else {
+			// Ha jó volt a validáció, akkor beszúrjuk az új rekordot az adatbázisba
+			// és visszatérünk a lista nézethez
         	$this->Dolgozok_model->insert_entry($this->input->post('dolgozonev'));
         	redirect('dolgozok/index');
     	}
