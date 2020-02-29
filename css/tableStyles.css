@@ -47,7 +47,7 @@
 }
 
 .listview-row:hover {
-    background-color: lightgoldenrodyellow;
+    background-color: rgb(255, 155, 100);
 }
 
 .listview-cell {
@@ -69,5 +69,5 @@
 }
 
 .checkbox-list-row:hover {
-    background-color: lightgoldenrodyellow;
+    background-color: rgb(255, 155, 100);
 }

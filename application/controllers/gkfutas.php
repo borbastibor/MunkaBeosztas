@@ -66,6 +66,14 @@ class Gkfutas extends CI_Controller {
 		$menudata['iscalendarview'] = FALSE;
 		$menudata['isadmin'] = $this->session->userdata('isAdmin');
 		$data['gkfutas'] = $this->Gkfutas_model->getGkfutasById($id);
+		$cardata = $this->Kocsik_model->getAllKocsik();
+		$data['caroptions'] = array();
+		foreach ($cardata as $cardata_item) {
+			$data['caroptions'] += [$cardata_item['gk_id'] => $cardata_item['gepkocsi']];
+		}
+		$data['dolgozolist'] = $this->Dolgozok_model->getAllDolgozok();
+		$data['feladatlist'] = $this->Munkak_model->getAllMunkak();
+		$data['utemezesek'] = $this->Gkfutas_model->getUtemezesekByGkfutasId($id);
 		$data['errors'] = null;
 		$partialviews = [
 			'header' => $this->load->view('partials/header_view', $headerdata, TRUE),
@@ -84,6 +92,14 @@ class Gkfutas extends CI_Controller {
 			$menudata['iscalendarview'] = FALSE;
 			$menudata['isadmin'] = $this->session->userdata('isAdmin');
 			$data['gkfutas'] = $this->Gkfutas_model->getGkfutasById($this->input->post('id'));
+			$cardata = $this->Kocsik_model->getAllKocsik();
+			$data['caroptions'] = array();
+			foreach ($cardata as $cardata_item) {
+				$data['caroptions'] += [$cardata_item['gk_id'] => $cardata_item['gepkocsi']];
+			}
+			$data['dolgozolist'] = $this->Dolgozok_model->getAllDolgozok();
+			$data['feladatlist'] = $this->Munkak_model->getAllMunkak();
+			$data['utemezesek'] = $this->Gkfutas_model->getUtemezesekByGkfutasId($id);
 			$data['errors'] = validation_errors();
 			$partialviews = [
 				'header' => $this->load->view('partials/header_view', $headerdata, TRUE),
@@ -93,7 +109,11 @@ class Gkfutas extends CI_Controller {
 			];
         	$this->load->view('public_template_view', $partialviews);
     	} else {
-        	$data = array ('feladat' => $this->input->post('feladat'));
+			$data['datum'] = $this->input->post('datum');
+			$data['gepkocsi'] = $this->input->post('gepkocsi');
+			$data['dolgozok'] = $this->input->post('dolgozok');
+			$data['feladatok'] = $this->input->post('feladatok');
+			$data['utemezesek'] = $this->input->post('utemezesek');
 			$this->Gkfutas_model->update_entry($this->input->post('id'), $data);
         	redirect('gkfutas/index');
     	}

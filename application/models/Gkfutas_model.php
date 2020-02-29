@@ -1,4 +1,5 @@
 <?php
+// TODO ismétlődő kódrészletek függvénybe szervezése
 class Gkfutas_model extends CI_Model {
 
     public function __construct() {
@@ -6,6 +7,7 @@ class Gkfutas_model extends CI_Model {
         $this->load->database();
     }
 
+    // Új rekord beszúrása
     public function insert_entry($alldata) {
         $this->db->insert('w_gepkocsi_futas', array(
             'datum' => $alldata['datum'],
@@ -29,14 +31,50 @@ class Gkfutas_model extends CI_Model {
         return;
     }
 
+    // Meglévő rekord módosítása
     public function update_entry($id, $alldata) {
-        //$this->db->where('gk_futas_id', $id);
-        //return $this->db->update('k_dolgozo', $data);
+        // Gkfutas rekord frissítése
+        // TODO Model használata az adatvisszanyeréshez
+        $query = $this->db->get_where('k_gepkocsi',array('gk_id' => $alldata['gepkocsi']));
+        $kocsi = $query->row();
+        print_r($kocsi);
+        $gkfutas_record = array(
+            'datum' => $alldata['datum'],
+            'gk_id' => $kocsi->gk_id
+        );
+        $this->db->where('gk_futas_id', $id);
+        $this->db->update('w_gepkocsi_futas', $gkfutas_record);
+        // Kapcsolodó dolgozók törlése és újralétrehozása
+        $this->db->where('gk_futas_id', $id);
+        $this->db->delete('w_dolgozo_kikuld');
+        foreach ($alldata['dolgozok'] as $dolgozo) {
+            $ujdolgozo_kapcsolat = array(
+                'gk_futas_id' => $id,
+                'dolgozo_id' => $dolgozo
+            );
+            $this->db->insert('w_dolgozo_kikuld', $ujdolgozo_kapcsolat);
+        }
+        // Kapcsolodó feladatok törlése és újralétrehozása
+        $this->db->where('gk_futas_id', $id);
+        $this->db->delete('w_feladat_kiad');
+        foreach ($alldata['feladatok'] as $feladat) {
+            $isUtemezheto = in_array($feladat) ? TRUE : FALSE;
+            $ujfeladat_kapcsolat = array(
+                'gk_futas_id' => $id,
+                'feladat_id' => $feladat,
+                'utemezheto' => $isUtemezheto
+            );
+            $this->db->insert('w_feladat_kiad', $ujfeladat_kapcsolat);
+        }
     }
 
+    // Rekord törlése
     public function delete_entry($id) {
-        //$this->db->where('dolgozo_id', $id);
-        //return $this->db->delete('k_dolgozo');
+        $this->db->where('gk_futas_id', $id);
+        $this->db->delete('w_feladat_kiad');
+
+        $this->db->where('gk_futas_id', $id);
+        $this->db->delete('w_gepkocsi_futas');
     }
 
     // Összes gkfutas rekord lekérése
@@ -88,13 +126,24 @@ class Gkfutas_model extends CI_Model {
         $query = $this->db->get();
         $result['dolgozok'] = $query->result_array();
 
-        $this->db->select('fk.utemezheto, f.feladat_leiras');
+        $this->db->select('f.feladat_id, f.feladat_leiras');
         $this->db->from('w_gepkocsi_futas gf');
         $this->db->join('w_feladat_kiad fk', 'gf.gk_futas_id = fk.gk_futas_id', 'left');
         $this->db->join('k_feladat f', 'fk.feladat_id = f.feladat_id', 'left');
         $this->db->where('gf.gk_futas_id', $id);
         $query = $this->db->get();
         $result['feladatok'] = $query->result_array();
+
+        return $result;
+    }
+
+    // Függvény az ütemezések lekérésére adott gk_futas_id-hoz
+    public function getUtemezesekByGkfutasId($id) {
+        $this->db->select('fk.gk_futas_id, fk.feladat_id, fk.utemezheto');
+        $this->db->from('w_feladat_kiad fk');
+        $this->db->where('fk.gk_futas_id', $id);
+        $query = $this->db->get();
+        $result = $query->result_array();
 
         return $result;
     }
