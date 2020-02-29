@@ -15,7 +15,7 @@
         echo(form_input(array(
             'name' => 'dolgozonev',
             'id' => 'dolgozonev',
-            'value' => set_value($worker->dolgozo_nev),
+            'value' => $worker->dolgozo_nev,
             'placeholder' => 'Írja be a dolgozó nevét...'
         )));
 

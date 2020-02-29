@@ -111,7 +111,7 @@ class Gkfutas_model extends CI_Model {
 
     // Gkfutas rekord lekérése id alapján
     public function getGkfutasById($id) {
-        $this->db->select('gf.gk_futas_id,gf.datum,k.gepkocsi');
+        $this->db->select('gf.gk_futas_id,gf.datum,k.gk_id, k.gepkocsi');
         $this->db->from('w_gepkocsi_futas gf');
         $this->db->join('k_gepkocsi k', 'gf.gk_id = k.gk_id', 'inner');
         $this->db->where('gf.gk_futas_id', $id);

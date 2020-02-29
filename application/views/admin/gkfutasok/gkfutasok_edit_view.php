@@ -19,7 +19,7 @@
 
         // Gépkocsi választó
         echo(form_label('Gépkocsi', 'gepkocsi'));
-        echo(form_dropdown('gepkocsi',$caroptions, $gkfutas[0]['gepkocsi']));
+        echo(form_dropdown('gepkocsi',$caroptions, $gkfutas[0]['gk_id']));
 
         // Dolgozók választó
         echo(form_label('Dolgozók', 'dolgozok'));
