@@ -39,7 +39,8 @@ class Munkak extends CI_Controller {
 			];
         	$this->load->view('public_template_view', $partialviews);
     	} else {
-			$this->Munkak_model->insert_entry($this->input->post('feladat'));
+			$feladat_array = array('feladat_leiras' => $this->input->post('feladat'));
+			$this->Munkak_model->insert_entry($feladat_array);
         	redirect('munkak/index');
     	}
 	}

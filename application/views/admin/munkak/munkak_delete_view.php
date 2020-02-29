@@ -6,9 +6,9 @@
     <div class="adminform-body">
     <?php
         echo('<p><strong>Feladat:</strong></p>');
-        echo($job->feladat_leiras);
+        echo($munka->feladat_leiras);
         echo(form_open('munkak/delete_confirm','',array(
-            'id' => $job->feladat_id
+            'id' => $munka->feladat_id
         )));
         echo(form_submit(array(
             'name' => 'delete',
