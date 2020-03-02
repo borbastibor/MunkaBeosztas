@@ -60,6 +60,36 @@ class Gkfutas extends CI_Controller {
     	}
 	}
 
+	// Kiküldetések legenerálása adott napra
+	public function createAll() {
+		if ($this->form_validation->run('gkfutasokAll_rules') == FALSE)
+    	{
+			$headerdata['iscalendarview'] = FALSE;
+			$menudata['iscalendarview'] = FALSE;
+			$menudata['isadmin'] = $this->session->userdata('isAdmin');
+			$data['errors'] = validation_errors();
+			$partialviews = [
+				'header' => $this->load->view('partials/header_view', $headerdata, TRUE),
+				'menu' => $this->load->view('partials/menu_view', $menudata, TRUE),
+				'content' => $this->load->view('admin/gkfutasok/gkfutasok_createallfordate_view', $data, TRUE),
+				'footer' => $this->load->view('partials/footer_view', '', TRUE)
+			];
+        	$this->load->view('public_template_view', $partialviews);
+    	} else {
+			$alldata = array();
+			$cardata = $this->Kocsik_model->getAllKocsik();
+			foreach ($cardata as $cardata_item) {
+				$alldata['datum'] = $this->input->post('datum');
+				$alldata['gk_id'] = $cardata_item['gk_id'];
+				$alldata['dolgozok'] = array();
+				$alldata['feladatok'] = array();
+				$alldata['utemezesek'] = array();
+				$this->Gkfutas_model->insert_entry($alldata);
+			}
+        	redirect('gkfutas/index');
+    	}
+	}
+
 	// Kiválasztott gépkocsifutás szerkesztése
 	public function edit($id) {
 		if ($id == null) {

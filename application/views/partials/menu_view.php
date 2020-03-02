@@ -12,7 +12,7 @@
         echo(anchor('kocsik/index', 'Gépkocsik', array('class' => 'calendar-control-btn')));
         echo(anchor('dolgozok/index', 'Dolgozók', array('class' => 'calendar-control-btn')));
         echo(anchor('munkak/index', 'Feladatok', array('class' => 'calendar-control-btn')));
-        echo(anchor('gkfutas/index', 'Gépkocsifutások', array('class' => 'calendar-control-btn')));
+        echo(anchor('gkfutas/index', 'Kiküldetések', array('class' => 'calendar-control-btn')));
     }
     echo('</div>');
 ?>

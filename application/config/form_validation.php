@@ -51,6 +51,17 @@ $config = array(
                 'required' => 'Nincs gépkocsi kiválasztva!'
             )
         )
+    ),
+
+    'gkfutasokAll_rules' => array(
+        array(
+            'field' => 'datum',
+            'label' => 'Dátum',
+            'rules' => 'required',
+            'errors' => array(
+                'required' => 'Nincs dátum megadva!'
+            )
+        )
     )
 );
 

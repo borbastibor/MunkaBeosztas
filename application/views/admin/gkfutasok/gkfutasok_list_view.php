@@ -1,8 +1,13 @@
 <div class="adminform-container">
-    <div class="adminform-title">Feladat hozzárendelések</div>
+    <div class="adminform-title">Kiküldetések</div>
     <?php echo(anchor('home/index','[X]',array('class' => 'cancel-button'))); ?>
     <div class="adminform-body">
-        <?php echo(anchor('gkfutas/create','Új hozzárendelés','class="itemcreate-button"')); ?>
+        <table style="padding: 0; margin: 0; border-collapse: collapse; border: none; text-align: center;">
+            <tr>
+                <td><?php echo(anchor('gkfutas/create','Új kiküldetés',array('class' => 'itemcreate-button', 'style' => 'width: 200px; margin-right: 5px;'))); ?></td>
+                <td><?php echo(anchor('gkfutas/createAll','Üres kiküldetések adott napra',array('class' => 'itemcreate-button', 'style' => 'width: 200px'))); ?></td>
+            </tr>
+        </table>
         <br />
         <table class="listview-table">
             <tr>

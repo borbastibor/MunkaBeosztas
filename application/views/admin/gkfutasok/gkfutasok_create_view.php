@@ -1,6 +1,6 @@
 <div class="adminform-container">
     <div class="adminform-title">
-        <span>Új feladat hozzárendelés létrehozása</span>
+        <span>Új kiküldetés létrehozása</span>
         <?php echo(anchor('gkfutas/index','[X]',array('class' => 'cancel-button'))); ?>
     </div>
     <div class="adminform-body">

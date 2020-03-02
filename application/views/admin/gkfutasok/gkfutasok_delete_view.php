@@ -1,6 +1,6 @@
 <div class="adminform-container">
     <div class="adminform-title">
-        <span>Feladat hozzárendelés törlése</span>
+        <span>Kiküldetés törlése</span>
         <?php echo(anchor('gkfutas/index','[X]',array('class' => 'cancel-button'))); ?>
     </div>
     <div class="adminform-body">
