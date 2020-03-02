@@ -57,3 +57,12 @@
     font-size: 12px;
     word-wrap: break-word;
 }
+
+.tag-title-link:link, .tag-title-link:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.tag-title-link:hover, .tag-title-link:active {
+    text-decoration: underline;
+}

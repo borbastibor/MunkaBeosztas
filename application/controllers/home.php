@@ -20,6 +20,7 @@ class Home extends CI_Controller {
 		$headerdata['refreshinterval'] = $this->refresh_interval;
 		$menudata['iscalendarview'] = TRUE;
 		$menudata['isadmin'] = $this->session->userdata('isAdmin');
+		$data['isadmin'] = $this->session->userdata('isAdmin');
 		$data['futasok'] = $this->Gkfutas_model->getGkfutasByTimePeriod($this->session->userdata('startdate'));
 		$data['sdate'] = $this->session->userdata('startdate');
 		$partialviews = [
