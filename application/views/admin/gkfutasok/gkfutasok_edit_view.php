@@ -49,6 +49,7 @@
         }
         foreach ($feladatlist as $flist_item) {
             $isSelected = in_array($flist_item['feladat_id'], $feladatok_values) ? TRUE : FALSE;
+            $isUtemezheto = FALSE;
             foreach ($utemezesek as $utemezes_item) {
                 if ($utemezes_item['feladat_id'] == $flist_item['feladat_id'] && $utemezes_item['utemezheto'] == 1) {
                     $isUtemezheto = TRUE;
