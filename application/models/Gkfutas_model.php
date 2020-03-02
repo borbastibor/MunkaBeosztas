@@ -58,7 +58,7 @@ class Gkfutas_model extends CI_Model {
         $this->db->where('gk_futas_id', $id);
         $this->db->delete('w_feladat_kiad');
         foreach ($alldata['feladatok'] as $feladat) {
-            $isUtemezheto = in_array($feladat) ? TRUE : FALSE;
+            $isUtemezheto = in_array($feladat, $alldata['utemezesek']) ? TRUE : FALSE;
             $ujfeladat_kapcsolat = array(
                 'gk_futas_id' => $id,
                 'feladat_id' => $feladat,
